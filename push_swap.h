@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:24:50 by earnaud           #+#    #+#             */
-/*   Updated: 2021/05/31 06:33:44 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/05/31 16:53:07 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 
 typedef struct s_stacks
 {
-	int *a;
-	int *b;
+	size_t *a;
+	size_t *b;
 	int size;
 }	t_stacks;
 
@@ -36,6 +36,12 @@ void	switch_rr(t_stacks *stack);
 void	switch_rra(t_stacks *stack, int write_it);
 void	switch_rrb(t_stacks *stack, int write_it);
 void	switch_rrr(t_stacks *stack);
+
+int		ft_isdigit(int c);
+int		other_than_num(const char *str);
+long	ft_atoi(const char *str);
+int		error(int ret);
+
 
 
 #endif
