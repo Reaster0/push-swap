@@ -6,33 +6,30 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 15:19:18 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/07 16:06:42 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/07 16:22:19 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_bzero(void *s, size_t n)
+void	*ft_bzero(void *str, size_t len)
 {
-	int i;
+		size_t index;
 
-	i = 0;
-	while (i <= n)
+	index = 0;
+	while (index < len)
 	{
-		((unsigned char *)s)[i] = 0;
+		*(char *)(str + index) = 0;
+		index++;
 	}
-}
+	// size_t	i;
 
-void	*ft_bzero_stack(void *str, size_t len)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < len)
-	{
-		((char *)str)[i] = 0;
-		i++;
-	}
+	// i = 0;
+	// while (i < len)
+	// {
+	// 	((unsigned char *)str)[i] = 0;
+	// 	i++;
+	// }
 	return (str);
 }
 
@@ -43,8 +40,8 @@ t_stacks	*convert_stack(int argc, char **argv)
 
 	i = 0;
 	stack = malloc(sizeof(t_stacks));
-	stack->a = ft_bzero_stack(malloc(sizeof(int) * (argc -1)), argc -1);
-	stack->b = ft_bzero_stack(malloc(sizeof(int) * (argc -1)), argc -1);
+	stack->a = ft_bzero(malloc(sizeof(int) * (argc -1)), argc -1);
+	stack->b = ft_bzero(malloc(sizeof(int) * (argc -1)), argc -1);
 	stack->size = argc -1;
 	argv++;
 	while(*argv)

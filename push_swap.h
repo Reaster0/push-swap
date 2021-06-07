@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:24:50 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/07 16:06:48 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/07 16:15:44 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,10 @@ int			ft_isdigit(int c);
 int			other_than_num(const char *str);
 long		ft_atoi(const char *str);
 int			error(int ret);
-void		*ft_bzero_stack(void *str, size_t len);
+void		*ft_bzero(void *str, size_t len);
 t_stacks	*convert_stack(int argc, char **argv);
 int			check_error(int argc, char **argv);
 
-
-
-void	ft_bzero(void *s, size_t n);
 //int		stack_len(int *stack);
 void	find_min_max(t_stacks *stacks, int *min_max);
 long		find_min(long *stack);
