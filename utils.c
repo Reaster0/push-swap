@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 16:10:59 by earnaud           #+#    #+#             */
-/*   Updated: 2021/05/31 16:53:24 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/07 16:07:17 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,19 @@ int	ft_isdigit(int c)
 	if (c >= '0' && c <= '9')
 		return (1);
 	return (0);
+}
+
+void	get_sorted(long *stack, long *result)
+{
+	int i;
+
+	i = 1;
+	result[0] = find_next(stack, 0);
+	while (i <= stack_nb(stack))
+	{
+		result[i] = find_next(stack, result[i - 1]);
+		i++;
+	}
 }
 
 int	other_than_num(const char *str)

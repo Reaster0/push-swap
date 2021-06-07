@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:24:50 by earnaud           #+#    #+#             */
-/*   Updated: 2021/05/31 16:53:07 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/07 16:06:48 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 
 typedef struct s_stacks
 {
-	size_t *a;
-	size_t *b;
+	long *a;
+	long *b;
 	int size;
 }	t_stacks;
 
-int		stack_nb(int *stack);
+int		stack_nb(long *stack);
 void	switch_sa(t_stacks *stack, int write_it);
 void	switch_sb(t_stacks *stack, int write_it);
 void	switch_ss(t_stacks *stack);
@@ -37,10 +37,24 @@ void	switch_rra(t_stacks *stack, int write_it);
 void	switch_rrb(t_stacks *stack, int write_it);
 void	switch_rrr(t_stacks *stack);
 
-int		ft_isdigit(int c);
-int		other_than_num(const char *str);
-long	ft_atoi(const char *str);
-int		error(int ret);
+int			ft_isdigit(int c);
+int			other_than_num(const char *str);
+long		ft_atoi(const char *str);
+int			error(int ret);
+void		*ft_bzero_stack(void *str, size_t len);
+t_stacks	*convert_stack(int argc, char **argv);
+int			check_error(int argc, char **argv);
+
+
+
+void	ft_bzero(void *s, size_t n);
+//int		stack_len(int *stack);
+void	find_min_max(t_stacks *stacks, int *min_max);
+long		find_min(long *stack);
+long		where_in(long *stack, int nbr);
+long		find_next(long *stack, int current);
+long		median_value(long *stack, int size);
+void		get_sorted(long *stack, long *result);
 
 
 

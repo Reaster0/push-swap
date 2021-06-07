@@ -6,13 +6,15 @@
 #    By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/31 02:21:14 by earnaud           #+#    #+#              #
-#    Updated: 2021/05/31 16:34:41 by earnaud          ###   ########.fr        #
+#    Updated: 2021/06/07 15:59:49 by earnaud          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS		= main.c \
 				operations.c \
-				utils.c
+				utils.c \
+				utils2.c \
+				finder.c
 
 OBJS		= $(SRCS:.c=.o)
 NAME		= push_swap

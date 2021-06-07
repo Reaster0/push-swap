@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:56:25 by earnaud           #+#    #+#             */
-/*   Updated: 2021/05/31 06:34:18 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/07 16:06:31 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ void switch_sa(t_stacks *stack, int write_it)
 	stack->a[stack->size -1] = temp; 
 }
 
-int	stack_nb(int *stack)
+int	stack_nb(long *stack)
 {
 	int i;
 
