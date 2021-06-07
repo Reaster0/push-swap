@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 15:19:18 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/07 16:22:19 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/07 16:36:13 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 void	*ft_bzero(void *str, size_t len)
 {
-		size_t index;
+	// 	size_t index;
 
-	index = 0;
-	while (index < len)
-	{
-		*(char *)(str + index) = 0;
-		index++;
-	}
-	// size_t	i;
-
-	// i = 0;
-	// while (i < len)
+	// index = 0;
+	// while (index < len)
 	// {
-	// 	((unsigned char *)str)[i] = 0;
-	// 	i++;
+	// 	*(char *)(str + index) = 0;
+	// 	index++;
 	// }
+	size_t	i;
+
+	i = 0;
+	while (i < len)
+	{
+		((unsigned char *)str)[i] = 0;
+		i++;
+	}
 	return (str);
 }
 
@@ -64,7 +64,7 @@ int	check_error(int argc, char **argv)
 		if (other_than_num(*argv))
 			return (1);
 		temp = ft_atoi(*argv);
-		if (temp > INT32_MAX || temp < INT32_MIN)
+		if (temp > 2147483647 || temp < -2147483648)
 			return (1);
 		argv++;
 	}

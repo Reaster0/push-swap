@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 15:28:59 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/07 16:02:29 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/07 16:32:49 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ long	median_value(long *stack, int size)
 	long temp[size];
 	int old;
 
-	ft_bzero(&temp, size);
+	ft_bzero(temp, size);
 	i = 0;
 	while (i <= size)
 	{
