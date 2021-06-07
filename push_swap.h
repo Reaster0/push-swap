@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:24:50 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/07 16:15:44 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/07 18:44:25 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ long		where_in(long *stack, int nbr);
 long		find_next(long *stack, int current);
 long		median_value(long *stack, int size);
 void		get_sorted(long *stack, long *result);
-
-
+int			check_sorted(t_stacks *stacks);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 15:28:59 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/07 16:32:49 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/07 18:44:00 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,25 @@ long	find_next(long *stack, int current)
 	i = 0;
 	while (stack[i])
 	{
-		next = stack[i];
-		if (stack[i] > current && stack[i] <= next)
-			result = stack[i];
+		if (stack[i] > current && (!result || stack[i] < result))
+		result = stack[i];
+		i++;
 	}
 	return (result);
+}
+
+void	find_sort(long *stack, int size, long *sorted)
+{
+	int i;
+	int old;
+
+	i = 0;
+	while (i < size)
+	{
+		sorted[i] = find_next(stack, old);
+		old = sorted[i];
+		i++;
+	}
 }
 
 long	median_value(long *stack, int size)
@@ -82,16 +96,33 @@ long	median_value(long *stack, int size)
 	long temp[size];
 	int old;
 
-	ft_bzero(temp, size);
 	i = 0;
-	while (i <= size)
-	{
-		old = temp[i];
-		i++;
-		temp[i] = find_next(stack, old);
-	}
+	old = 0;
+	find_sort(stack, size, temp);
 	if (size % 2)
-	old = size % 2;
-	size = size / 2;
+	{
+		size = size / 2;
+		size++;
+	}
+	else
+		size = size / 2;
 	return (temp[size]);
+}
+
+int	check_sorted(t_stacks *stacks)
+{
+	int i;
+	long sorted[stacks->size];
+
+	i = 0;
+	if (stacks->b[0])
+		return(0);
+	find_sort(stacks->a, stacks->size, sorted);
+	while (stacks->a[i] && sorted[i])
+	{
+		if (stacks->a[i] != sorted[i])
+			return(0);
+		i++;
+	}
+	return (1);
 }
