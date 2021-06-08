@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 15:28:59 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/07 18:44:00 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/08 16:07:52 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ void	find_sort(long *stack, int size, long *sorted)
 	int old;
 
 	i = 0;
-	while (i < size)
+	old = 0;
+	while (i <= size)
 	{
 		sorted[i] = find_next(stack, old);
 		old = sorted[i];
@@ -93,7 +94,7 @@ void	find_sort(long *stack, int size, long *sorted)
 long	median_value(long *stack, int size)
 {
 	int	i;
-	long temp[size];
+	long temp[size + 1];
 	int old;
 
 	i = 0;

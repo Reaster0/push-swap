@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:56:25 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/08 11:49:23 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/08 17:23:07 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,11 @@ void switch_pb(t_stacks *stack, int write_it)
 	if (write_it)
 		write(STDOUT_FILENO, "pb\n", 3);
 	if (!stack_nb(stack->a))
-		return ;
-	stack->b[stack_nb(stack->b) + 1] = stack->a[stack_nb(stack->a)];
+		return;
+	//if (stack_nb(stack->b) )
+	//	stack->b[stack_nb(stack->b) + 1] = stack->a[stack_nb(stack->a)];
+	//else
+		stack->b[stack_nb(stack->b)] = stack->a[stack_nb(stack->a)];
 	stack->a[stack_nb(stack->a)] = 0;
 }
 
@@ -109,8 +112,12 @@ void switch_pa(t_stacks *stack, int write_it)
 	if (write_it)
 		write(STDOUT_FILENO, "pa\n", 3);
 	if (!stack_nb(stack->b))
-		return ;
-	stack->a[stack_nb(stack->a) + 1] = stack->b[stack_nb(stack->b)];
+		return;
+	//if (stack_nb(stack->a))
+	//	stack->a[stack_nb(stack->a) + 1] = stack->b[stack_nb(stack->b)];
+	//else
+		stack->a[stack_nb(stack->a)] = stack->b[stack_nb(stack->b)];
+
 	stack->b[stack_nb(stack->b)] = 0;
 }
 
@@ -147,12 +154,24 @@ void switch_sa(t_stacks *stack, int write_it)
 	stack->a[stack->size -1] = temp; 
 }
 
-int	stack_nb(long *stack)
+int	stack_size(long *stack)
 {
 	int i;
 
 	i = 0;
-	while(stack[i])
+	while (stack[i] && stack[i + 1])
 		i++;
-	return(i);
+	return (i);
+}
+
+int	stack_nb(long *stack)
+{
+	int i;
+
+	i = 1;
+	if (!stack[0])
+		return (0);
+	while (stack[i])
+		i++;
+	return (i);
 }

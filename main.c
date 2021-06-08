@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:17:21 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/08 14:08:29 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/08 17:22:20 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,14 @@ void	rotate_until_push_a(t_stacks *stacks)
 
 	if (check_sorted(stacks) && stacks->a[stacks->size])
 		return ;
-	pivot = median_value(stacks->a, stacks->size);
+	pivot = median_value(stacks->a, stack_nb(stacks->a));
 	while(there_min(stacks->a, pivot)) //optimization here
 	{
 		if (stacks->a[stack_nb(stacks->a)] < pivot)
 			switch_pb(stacks, 1);
 		else
 			switch_ra(stacks, 1);
+		print_stacks(stacks);
 	}
 }
 
@@ -48,13 +49,14 @@ void	rotate_until_push_b(t_stacks *stacks)
 
 	if (check_sorted(stacks) && stacks->a[stacks->size])
 		return ;
-	pivot = median_value(stacks->b, stacks->size);
+	pivot = median_value(stacks->b, stack_nb(stacks->b));
 	while(there_min(stacks->b, pivot)) //optimization here
 	{
 		if (stacks->b[stack_nb(stacks->b)] < pivot)
 			switch_pa(stacks, 1);
 		else
 			switch_rb(stacks, 1);
+		print_stacks(stacks);
 	}
 }
 
@@ -63,27 +65,35 @@ void	print_stacks(t_stacks *stacks)
 	int i;
 	int j;
 
-	i = stack_nb(stacks->a);
-	j = stack_nb(stacks->b);
+	i = stack_size(stacks->a);
+	j = stack_size(stacks->b);
+	//if (i)
+	//	i--;
+	//if (j)
+	//	j--;
 
-	while (i || j)
+	while (i >= 0)
 	{
-		printf("   | %ld |   | %ld |\n", stacks->a[i], stacks->b[j]);
-		if (i)
+		printf("   |%3ld|   |%3ld|\n", stacks->a[i], stacks->b[i]);
+		//if (i)
 			i--;
-		if (j)
-			j--;
+		//if (j)
+		//	j--;
+		//if (!i && !j)
+			//printf("   |%3ld|   |%3ld|\n", stacks->a[i], stacks->b[i]);
 	}
+	printf("\n----------------------\n----------------------\n");
 }
 
 void	ft_magic(t_stacks *stacks)
 {
 	int min_max[2];
+	
+	print_stacks(stacks);
 	if (check_sorted(stacks))
 		return ;
-//	rotate_until_push_a(stacks);
-//	rotate_until_push_b(stacks);
-	print_stacks(stacks);
+	rotate_until_push_a(stacks);
+	rotate_until_push_b(stacks);
 	ft_magic(stacks);
 }
 

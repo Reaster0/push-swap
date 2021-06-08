@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 15:19:18 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/08 14:34:23 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/08 15:23:17 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,13 @@ t_stacks	*convert_stack(int argc, char **argv)
 
 	i = argc - 1;
 	stack = malloc(sizeof(t_stacks));
-	//stack->a = ft_bzero(malloc(sizeof(int) * (argc -1)), argc -1);
-	//stack->b = ft_bzero(malloc(sizeof(int) * (argc -1)), argc -1);
-	stack->a = malloc(sizeof(int) * (argc));
-	stack->b = malloc(sizeof(int) * (argc));
-	stack->size = argc -1;
-	while(*argv)
+	stack->a = malloc(sizeof(long) * (argc));
+	stack->b = malloc(sizeof(long) * (argc));
+	stack->size = argc - 1;
+	stack->a[i] = 0;
+	stack->b[i] = 0;
+	i--;
+	while (*argv)
 	{
 		stack->a[i] = ft_atoi(*argv);
 		stack->b[i] = 0;
