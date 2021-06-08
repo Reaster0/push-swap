@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:24:50 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/07 18:44:25 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/08 11:56:54 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,15 @@ t_stacks	*convert_stack(int argc, char **argv);
 int			check_error(int argc, char **argv);
 
 //int		stack_len(int *stack);
-void	find_min_max(t_stacks *stacks, int *min_max);
+int			stack_nb(long *stack);
+void		find_min_max(t_stacks *stacks, int *min_max);
 long		find_min(long *stack);
 long		where_in(long *stack, int nbr);
 long		find_next(long *stack, int current);
 long		median_value(long *stack, int size);
 void		get_sorted(long *stack, long *result);
 int			check_sorted(t_stacks *stacks);
+int			there_min(long *stack, long pivot);
+
 
 #endif

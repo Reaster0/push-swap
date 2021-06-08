@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:56:25 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/07 16:06:31 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/08 11:49:23 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void switch_rb(t_stacks *stack, int write_it)
 	
 	if (write_it)
 		write(STDOUT_FILENO, "rb\n", 3);
-	i = 0;
+	i = stack_nb(stack->b);
 	temp = stack->b[stack_nb(stack->b)];
 	while(i)
 	{
@@ -43,7 +43,7 @@ void switch_ra(t_stacks *stack, int write_it)
 
 	if (write_it)
 		write(STDOUT_FILENO, "ra\n", 3);
-	i = 0;
+	i = stack_nb(stack->a);
 	temp = stack->a[stack_nb(stack->a)];
 	while(i)
 	{
