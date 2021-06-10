@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:17:21 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/08 17:22:20 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/10 14:58:18 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,10 @@ void	print_stacks(t_stacks *stacks)
 	int i;
 	int j;
 
-	i = stack_size(stacks->a);
-	j = stack_size(stacks->b);
-	//if (i)
-	//	i--;
-	//if (j)
-	//	j--;
+	i = stack_nb(stacks->a);
+	j = stack_nb(stacks->b);
+	if (j > i)
+	 i = j;
 
 	while (i >= 0)
 	{

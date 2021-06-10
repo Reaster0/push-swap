@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:24:50 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/08 17:15:43 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/10 14:34:12 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ t_stacks	*convert_stack(int argc, char **argv);
 int			check_error(int argc, char **argv);
 
 //int		stack_len(int *stack);
-int			stack_nb(long *stack);
 int			stack_size(long *stack);
 void		find_min_max(t_stacks *stacks, int *min_max);
 long		find_min(long *stack);
