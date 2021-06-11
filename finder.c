@@ -6,25 +6,25 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 15:28:59 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/08 16:07:52 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/11 19:14:38 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	find_min_max(t_stacks *stacks, int *min_max)
+void	find_min_max(long *stack, int *min_max)
 {
 	int i;
 
 	i = 1;
-	min_max[0] = stacks->a[0];
-	min_max[1] = stacks->a[0];
-	while (stacks->a[i])
+	min_max[0] = stack[0];
+	min_max[1] = stack[0];
+	while (stack[i])
 	{
-		if (stacks->a[i] < min_max[0])
-			min_max[0] = stacks->a[i];
-		if (stacks->a[i] > min_max[1])
-			min_max[1] = stacks->a[i];
+		if (stack[i] < min_max[0])
+			min_max[0] = stack[i];
+		if (stack[i] > min_max[1])
+			min_max[1] = stack[i];
 		i++;
 	}
 }

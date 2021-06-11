@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:24:50 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/10 14:34:12 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/11 19:14:52 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int			check_error(int argc, char **argv);
 
 //int		stack_len(int *stack);
 int			stack_size(long *stack);
-void		find_min_max(t_stacks *stacks, int *min_max);
+void		find_min_max(long *stack, int *min_max);
 long		find_min(long *stack);
 long		where_in(long *stack, int nbr);
 long		find_next(long *stack, int current);
@@ -57,6 +57,6 @@ int			check_sorted(t_stacks *stacks);
 int			there_min(long *stack, long pivot);
 void		print_stacks(t_stacks *stacks);
 
-
+void second_algo(t_stacks *stack);
 
 #endif
