@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:56:25 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/10 14:36:49 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/14 18:45:58 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void switch_pb(t_stacks *stack, int write_it)
 {
 	if (write_it)
 		write(STDOUT_FILENO, "pb\n", 3);
-	if (!stack_nb(stack->a))
+	if (stack_nb(stack->a) == -1)
 		return;
 	//if (stack_nb(stack->b) )
 	//	stack->b[stack_nb(stack->b) + 1] = stack->a[stack_nb(stack->a)];
@@ -111,7 +111,7 @@ void switch_pa(t_stacks *stack, int write_it)
 {
 	if (write_it)
 		write(STDOUT_FILENO, "pa\n", 3);
-	if (!stack_nb(stack->b))
+	if (stack_nb(stack->b) == -1)
 		return;
 	//if (stack_nb(stack->a))
 	//	stack->a[stack_nb(stack->a) + 1] = stack->b[stack_nb(stack->b)];
@@ -175,5 +175,7 @@ int	stack_nb(long *stack)
 		i++;
 	if (!stack[i] && i)
 		i--;
+	if (!stack[i])
+		return (-1);
 	return (i);
 }
