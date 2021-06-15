@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 18:44:36 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/15 12:50:36 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/15 14:09:12 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void split_half(t_stacks *stack)
 		else
 			best_rotate_split(stack, stack_nb(stack->a), median);
 			//switch_ra(stack, 1);
-		print_stacks(stack);
+		//print_stacks(stack);
 	}
 }
 
@@ -59,7 +59,7 @@ void best_rotate_b(t_stacks *stack, int index, long goal)
 	ij[0] = 0;
 	ij[1] = 0;
 
-	print_stacks(stack);
+	//print_stacks(stack);
 	
 	while (stack->b[index] != goal)
 	{
@@ -144,7 +144,7 @@ void put_into_b(t_stacks *stack)
 	int min_max[2];
 	int i;
 
-	print_stacks(stack);
+	//print_stacks(stack);
 	i = stack_nb(stack->a);
 	if (!stack->a[0])
 		return;
@@ -160,7 +160,7 @@ void put_into_a(t_stacks *stack, long median)
 	int min_max[2];
 	int i;
 
-	print_stacks(stack);
+	//print_stacks(stack);
 
 	i = stack_nb(stack->b);
 	if (!stack->b[0])
@@ -178,7 +178,7 @@ void second_algo(t_stacks *stack)
 {
 
 	split_half(stack);
-	print_stacks(stack);
+	//print_stacks(stack);
 	put_into_b(stack);
 	//maybe put all of the big numbers in b to a before/ okay done
 	put_into_a(stack, median_value(stack->b, stack->size));
