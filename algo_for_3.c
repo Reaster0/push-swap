@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 15:40:26 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/15 16:32:22 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/15 18:32:23 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void algo_for_3(t_stacks *stack)
 		}
 	else if (stack->a[1] == min_max[1])
 	{
-		switch_ra(stack,1);
+		switch_rra(stack,1);
 		if (!check_sorted(stack))
 			switch_sa(stack, 1);
 	}
