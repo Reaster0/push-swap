@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:17:21 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/15 14:09:15 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/15 16:26:06 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ void	print_stacks(t_stacks *stacks)
 void	ft_magic(t_stacks *stacks)
 {
 	//print_stacks(stacks);
-	second_algo(stacks);
+	//second_algo(stacks); //algo for 100
+	algo_for_3(stacks);
+	//print_stacks(stacks);
+
 	//ft_magic(stacks);
 }
 
