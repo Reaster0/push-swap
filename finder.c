@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 15:28:59 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/11 19:14:38 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/15 12:27:11 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ long	find_min(long *stack)
 	return (min);
 }
 
-long	where_in(long *stack, int nbr)
+long	where_in(long *stack, long nbr)
 {
 	int i;
 
@@ -59,7 +59,7 @@ long	where_in(long *stack, int nbr)
 	return (-1);
 }
 
-long	find_next(long *stack, int current)
+long	find_next(long *stack, long current)
 {
 	int i;
 	int result;
