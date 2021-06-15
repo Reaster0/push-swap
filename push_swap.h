@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:24:50 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/15 19:08:30 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/15 20:12:44 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void		*ft_bzero(void *str, size_t len);
 t_stacks	*convert_stack(int argc, char **argv);
 int			check_error(int argc, char **argv);
 
-//int		stack_len(int *stack);
 int			stack_size(long *stack);
 void		find_min_max(long *stack, int *min_max);
 long		find_min(long *stack);
@@ -64,5 +63,6 @@ void		best_rotate_split(t_stacks *stack, int index, long median);
 void second_algo(t_stacks *stack);
 void algo_for_3(t_stacks *stack);
 void algo_for_5(t_stacks *stack);
+void algo_merge(t_stacks *stack);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 15:28:59 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/15 18:28:31 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/15 20:14:24 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ long	median_value(long *stack, int size)
 	return (temp[size]);
 }
 
-int	check_sorted(t_stacks *stacks) // je sort a l'enver ptn
+int	check_sorted(t_stacks *stacks)
 {
 	int i;
 	int j;
