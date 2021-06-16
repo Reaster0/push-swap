@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:24:50 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/15 20:12:44 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/16 15:46:49 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+
+
+typedef enum e_action
+{
+	R_,
+	RR_,
+	S_,
+	SS_,
+}			t_action;
 
 typedef struct s_stacks
 {
@@ -58,11 +67,13 @@ void		print_stacks(t_stacks *stacks);
 void		best_rotate_b(t_stacks *stack, int index, long goal);
 void		best_rotate_a(t_stacks *stack, int index, long goal);
 void		best_rotate_split(t_stacks *stack, int index, long median);
+void		split_half(t_stacks *stack);
 
 
 void second_algo(t_stacks *stack);
 void algo_for_3(t_stacks *stack);
 void algo_for_5(t_stacks *stack);
 void algo_merge(t_stacks *stack);
+void third_algo(t_stacks *stack);
 
 #endif

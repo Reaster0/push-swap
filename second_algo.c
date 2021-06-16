@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 18:44:36 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/15 14:09:12 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/16 17:07:47 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,12 @@ void split_half(t_stacks *stack)
 
 	i = 0;
 	median = median_value(stack->a, stack->size);
-	while (there_max(stack->a, median))
+	while (there_min(stack->a, median))
 	{
-		if (stack->a[stack_nb(stack->a)] >= median)
+		if (stack->a[stack_nb(stack->a)] < median)
 			switch_pb(stack, 1);
 		else
 			best_rotate_split(stack, stack_nb(stack->a), median);
-			//switch_ra(stack, 1);
-		//print_stacks(stack);
 	}
 }
 
