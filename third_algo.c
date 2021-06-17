@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 12:14:34 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/16 19:38:58 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/17 13:53:20 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,22 +147,48 @@ int	best_place(long *stack, long value, long index)
 	return (best_place(stack, value, index));
 }
 
-int action_to_sort(long *stack)
+t_action action_to_sort(long *stack)
 {
 	long current;
 
 	//current = find_min_not_sort(stack);
 	current = find_next(stack, find_min_not_sort(stack));
 
-	while (!best_place(stack, current, where_in(stack, current)))
+	if (!best_place(stack, current, where_in(stack, current)))
 	{
-       //continue the work here
+		if (where_in(stack, current) == stack_nb(stack))
+			return (S_);
+		else
+			return (R_);
 	}
+	return(NOTHING);
+}
+
+void make_action(t_stacks *stack, t_action *action)
+{
+	if (action[0] == R_ && action[1] == R_)
+		switch_rr(stack);
+	else if (action[0] == S_ && action[1] == S_)
+		switch_ss(stack);
+	else if (action[0] == S_)
+		switch_sa(stack, 1);
+	else if (action[1] == S_)
+		switch_sb(stack, 1);
+	else if (action[0] == R_)
+		switch_ra(stack, 1);
+	else if (action[1] == R_)
+		switch_rb(stack, 1);
 }
 
 void third_algo(t_stacks *stack)
 {
+	t_action action[2];
 	//split_half(stack);
+	while (!check_sorted(stack))
+	{
 	print_stacks(stack);
-	action_to_sort(stack->a);
+	action[0] = action_to_sort(stack->a);
+	action[1] = action_to_sort(stack->b);
+	make_action(stack, action);
+	}
 }
