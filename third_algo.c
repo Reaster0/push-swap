@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 12:14:34 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/17 13:53:20 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/17 15:21:32 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //split en deux stacks a partir du pivot
 //remonter les plus petits nombres au dessus des deux pile et essayer d'opti en checkant si les deux doivent r ou rr pour le faire en meme temps
 // 
-
+//l'ordre utilisé c'est plus gros en bas et plus petit en haut
 
 int best_rotate_ret(long *stack, int index, long goal)
 {
@@ -85,19 +85,19 @@ long find_min_not_sort(long *stack)
 
 	find_min_max(stack, min_max);
 	i = where_in(stack, *min_max);
-	if (i != stack_nb(stack))
-		temp = stack[i + 1];
+	if (i != 0 )
+		temp = stack[i - 1];
 	else
-		temp = stack[0];
+		temp = stack[stack_nb(stack)];
 	while (temp == find_next(stack, stack[i]))
 	{
-		i++;
-		if (i > stack_nb(stack))
-			i = 0;
-		if (i != stack_nb(stack))
-			temp = stack[i + 1];
+		i--;
+		if (i < 0)
+			i = stack_nb(stack);
+		if (i != 0)
+			temp = stack[i - 1];
 		else
-			temp = stack[0];
+			temp = stack_nb(stack);
 	}
 	return (stack[i]);
 }
@@ -126,10 +126,13 @@ int	best_place(long *stack, long value, long index)
 
 	//result = 1;
 	//i = where_in(stack ,value);
+	if (index == -1)
+		return (1);
 	if (find_min(stack) == stack[index])
 		return (1);
 	temp = stack[index];
-	if (--index == 0)
+	index--;
+	if (index == -1)
 		index = stack_nb(stack);
 	if (stack[index] < temp)
 		return (0);
@@ -156,12 +159,23 @@ t_action action_to_sort(long *stack)
 
 	if (!best_place(stack, current, where_in(stack, current)))
 	{
-		if (where_in(stack, current) == stack_nb(stack))
+		if (where_in(stack, current) == stack_nb(stack) - 1)
 			return (S_);
 		else
 			return (R_);
 	}
 	return(NOTHING);
+}
+
+void end_of_third(t_stacks *stack)
+{
+	if (!stack->b[0])
+		return ;
+	if (stack->b[1])
+		switch_rrb(stack, 1);
+	switch_pa(stack, 1);
+	print_stacks(stack);
+	end_of_third(stack);
 }
 
 void make_action(t_stacks *stack, t_action *action)
@@ -178,12 +192,16 @@ void make_action(t_stacks *stack, t_action *action)
 		switch_ra(stack, 1);
 	else if (action[1] == R_)
 		switch_rb(stack, 1);
+	else if (action[0] == NOTHING && action[1]== NOTHING)
+		end_of_third(stack);
+	//if nothing and nothing alors rrb et push b dans a
 }
 
 void third_algo(t_stacks *stack)
 {
 	t_action action[2];
 	//split_half(stack);
+	split_half(stack);
 	while (!check_sorted(stack))
 	{
 	print_stacks(stack);
