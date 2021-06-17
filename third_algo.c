@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 12:14:34 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/17 15:21:32 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/17 18:01:00 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ long find_min_not_sort(long *stack)
 {
 	int i;
 	long temp;
-	int min_max[2];
+	int min_max[2];  // 52 and 49 are the impostor
 
 	find_min_max(stack, min_max);
 	i = where_in(stack, *min_max);
@@ -97,7 +97,7 @@ long find_min_not_sort(long *stack)
 		if (i != 0)
 			temp = stack[i - 1];
 		else
-			temp = stack_nb(stack);
+			temp = stack_nb(stack);   //the bug is here
 	}
 	return (stack[i]);
 }
@@ -169,12 +169,13 @@ t_action action_to_sort(long *stack)
 
 void end_of_third(t_stacks *stack)
 {
+	print_stacks(stack);
 	if (!stack->b[0])
 		return ;
 	if (stack->b[1])
 		switch_rrb(stack, 1);
 	switch_pa(stack, 1);
-	print_stacks(stack);
+	//print_stacks(stack);
 	end_of_third(stack);
 }
 
@@ -194,17 +195,19 @@ void make_action(t_stacks *stack, t_action *action)
 		switch_rb(stack, 1);
 	else if (action[0] == NOTHING && action[1]== NOTHING)
 		end_of_third(stack);
-	//if nothing and nothing alors rrb et push b dans a
 }
 
 void third_algo(t_stacks *stack)
 {
 	t_action action[2];
-	//split_half(stack);
+	int debug;
+
+	debug = 0; 
 	split_half(stack);
 	while (!check_sorted(stack))
 	{
-	print_stacks(stack);
+	if (debug)
+		print_stacks(stack);
 	action[0] = action_to_sort(stack->a);
 	action[1] = action_to_sort(stack->b);
 	make_action(stack, action);
