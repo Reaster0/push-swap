@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 18:44:36 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/16 17:07:47 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/22 13:14:01 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ void best_rotate_a(t_stacks *stack, int index, long goal)
 
 void put_into_b(t_stacks *stack)
 {
-	int min_max[2];
+	long min_max[2];
 	int i;
 
 	//print_stacks(stack);
@@ -155,7 +155,7 @@ void put_into_b(t_stacks *stack)
 
 void put_into_a(t_stacks *stack, long median)
 {
-	int min_max[2];
+	long min_max[2];
 	int i;
 
 	//print_stacks(stack);

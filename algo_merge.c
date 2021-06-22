@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 20:11:24 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/16 12:48:22 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/22 13:14:29 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void split_array(long *stack, long **split_stack)
 
 void algo_merge(t_stacks *stack)
 {
-	int min_max[2];
+	long min_max[2];
 	long *split_stack[2];
 
 	find_min_max(stack->a, min_max);

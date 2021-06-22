@@ -6,13 +6,13 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 15:28:59 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/15 20:14:24 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/22 15:02:15 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	find_min_max(long *stack, int *min_max)
+void	find_min_max(long *stack, long *min_max)
 {
 	int i;
 
@@ -120,7 +120,7 @@ int	check_sorted(t_stacks *stacks)
 	j = stack_nb(stacks->a);
 	if (stacks->b[0])
 		return(0);
-	sorted = malloc(sizeof(long) * stacks->size);
+	sorted = malloc(sizeof(long) * (stacks->size + 1));
 	find_sort(stacks->a, stacks->size, sorted);
 	while (j >= 0 && stacks->a[j] && sorted[i])
 	{

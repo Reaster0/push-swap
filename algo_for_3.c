@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 15:40:26 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/15 18:32:23 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/22 13:13:14 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void algo_for_3(t_stacks *stack)
 {
-	int min_max[2];
+	long min_max[2];
 
 	if (check_sorted(stack))
 		return ;

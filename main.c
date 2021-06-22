@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:17:21 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/16 12:43:25 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/22 16:09:49 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@ void	print_stacks(t_stacks *stacks)
 	j = stack_nb(stacks->b);
 	if (j > i)
 	 i = j;
-
 	while (i >= 0)
 	{
-		printf("   |%3ld|   |%3ld|\n", stacks->a[i], stacks->b[i]);
+		if (j == -1)
+			printf("   |%3ld|   |0|\n", stacks->a[i]);
+		else
+			printf("   |%3ld|   |%3ld|\n", stacks->a[i], stacks->b[i]);
 		//if (i)
 			i--;
 		//if (j)
@@ -43,6 +45,7 @@ void	ft_magic(t_stacks *stacks, int nbr)
 	if (nbr == 5)
 		algo_for_5(stacks);
 	else
+		//second_algo(stacks);
 		third_algo(stacks);
 		//algo_merge(stacks);
 		
