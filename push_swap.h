@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:24:50 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/22 15:06:28 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/23 13:16:21 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ void		best_rotate_b(t_stacks *stack, int index, long goal);
 void		best_rotate_a(t_stacks *stack, int index, long goal);
 void		best_rotate_split(t_stacks *stack, int index, long median);
 void		split_half(t_stacks *stack);
+int			best_place(long *stack, long value, long index);
+
 
 
 void second_algo(t_stacks *stack);

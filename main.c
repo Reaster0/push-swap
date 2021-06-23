@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:17:21 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/22 16:09:49 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/23 12:15:21 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	ft_magic(t_stacks *stacks, int nbr)
 	if (nbr == 5)
 		algo_for_5(stacks);
 	else
-		//second_algo(stacks);
-		third_algo(stacks);
+		second_algo(stacks);
+		//third_algo(stacks);
 		//algo_merge(stacks);
 		
 	//second_algo(stacks); //algo for 100

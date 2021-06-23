@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 12:14:34 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/22 16:22:25 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/23 13:16:46 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,13 +111,6 @@ long find_min_not_sort(long *stack)
 // 	if (stack[stack_nb(stack)] == min_max[0])
 // 		min_max[0] == find_next(stack, min_max[0]);
 // }
-
-void set_min_top2(t_stacks *stack)
-{
-	long min_max[2];
-
-	find_min_max(stack->a, min_max);
-}
 
 int	best_place(long *stack, long value, long index)
 {

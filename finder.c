@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 15:28:59 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/22 15:02:15 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/23 13:39:17 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,11 @@ long	find_next(long *stack, long current)
 		i++;
 	}
 	return (result);
+}
+
+long	find_prev(long *stack, long current)
+{
+	
 }
 
 void	find_sort(long *stack, int size, long *sorted)
