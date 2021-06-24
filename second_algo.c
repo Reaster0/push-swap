@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 18:44:36 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/23 13:37:11 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/23 16:27:32 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,59 +172,16 @@ void put_into_a(t_stacks *stack, long median)
 	put_into_a(stack, median);
 }
 
-int is_in_suite(long *stack, long value, long index)
-{
-	index--;
-	if (index > stack_nb(stack))
-		index = 0;
-	else if (index < 0)
-		index = stack_nb(stack);
-	if (stack[index] == find_next(stack, value))
-		return (1);
-	index += 2;
-	if (index > stack_nb(stack))
-		index = 0;
-	else if (index < 0)
-		index = stack_nb(stack);
-	if (stack[index] == find_prev(stack, value))
-		return (1);
-	return (0);
-}
-
-int there_only_suites(long *stack)
-{
-	int i;
-
-	i = stack_nb(stack);
-	while (i)
-	{
-		if (!is_in_suite(stack, stack[i], i))
-			return (0);
-	}
-	return (1);
-}
-
-void put_unsorted_b(t_stacks *stack)
-{
-
-	while (!there_only_suites(stack->a))
-	{
-		if (!is_in_suite(stack->a, stack->a[stack_nb(stack->a)], stack_nb(stack->a)))
-			switch_pb(stack, 1);
-		else
-			switch_ra(stack, 1);
-	}
-}
-
 void second_algo(t_stacks *stack)
 {
 
-	//split_half(stack);
-	put_unsorted_b(stack);
+	split_half(stack);
+	//put_unsorted_b(stack);
 
 	//print_stacks(stack);
+	
 	put_into_b(stack);
 	//maybe put all of the big numbers in b to a before/ okay done
 	put_into_a(stack, median_value(stack->b, stack->size));
-
+	//print_stacks(stack);
 }

@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:24:50 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/23 13:16:21 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/24 16:39:06 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-
 
 typedef enum e_action
 {
@@ -60,23 +59,24 @@ void		find_min_max(long *stack, long *min_max);
 long		find_min(long *stack);
 long		where_in(long *stack, long nbr);
 long		find_next(long *stack, long current);
+long		find_prev(long *stack, long current);
 long		median_value(long *stack, int size);
 void		get_sorted(long *stack, long *result);
 int			check_sorted(t_stacks *stacks);
 int			there_min(long *stack, long pivot);
 void		print_stacks(t_stacks *stacks);
+void		print_list(long *stack);
 void		best_rotate_b(t_stacks *stack, int index, long goal);
 void		best_rotate_a(t_stacks *stack, int index, long goal);
 void		best_rotate_split(t_stacks *stack, int index, long median);
 void		split_half(t_stacks *stack);
 int			best_place(long *stack, long value, long index);
 
-
-
 void second_algo(t_stacks *stack);
 void algo_for_3(t_stacks *stack);
 void algo_for_5(t_stacks *stack);
 void algo_merge(t_stacks *stack);
 void third_algo(t_stacks *stack);
+void insertionv2(t_stacks * stack, long size);
 
 #endif

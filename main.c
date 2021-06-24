@@ -6,11 +6,25 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:17:21 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/23 12:15:21 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/24 16:51:35 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+
+void	print_list(long *stack)
+{
+	int i;	
+
+	i = stack_nb(stack);
+	while (i >= 0)
+	{
+			printf("|%3ld|\n", stack[i]);
+			i--;
+	}
+	printf("\n--------------\n----------------\n");
+}
 
 void	print_stacks(t_stacks *stacks)
 {
@@ -45,14 +59,13 @@ void	ft_magic(t_stacks *stacks, int nbr)
 	if (nbr == 5)
 		algo_for_5(stacks);
 	else
-		second_algo(stacks);
+		//second_algo(stacks);
 		//third_algo(stacks);
 		//algo_merge(stacks);
-		
-	//second_algo(stacks); //algo for 100
+		insertionv2(stacks, stacks->size);
+
 	//print_stacks(stacks);
 
-	//ft_magic(stacks);
 }
 
 int main(int argc, char **argv)
