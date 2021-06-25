@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 12:14:34 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/23 13:16:46 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/25 16:12:01 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,12 +114,8 @@ long find_min_not_sort(long *stack)
 
 int	best_place(long *stack, long value, long index)
 {
-	//long i;
 	long temp;
-	///int result;
-
-	//result = 1;
-	//i = where_in(stack ,value);
+	
 	if (index == -1)
 		return (1);
 	if (find_min(stack) == stack[index])
@@ -130,17 +126,6 @@ int	best_place(long *stack, long value, long index)
 		index = stack_nb(stack);
 	if (stack[index] < temp)
 		return (0);
-	// while (find_min(stack) != stack[i])
-	// {
-	// 	temp = stack[i];
-	// 	i++;
-	// 	if (i >= stack_nb(stack))
-	// 		i = 0;
-	// 	if (find_min(stack) == stack[i])
-	// 		break ;
-	// 	if (stack[i] > temp)
-	// 		result = 0;
-	// }
 	return (best_place(stack, value, index));
 }
 
