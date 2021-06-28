@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 15:28:59 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/23 14:00:01 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/28 19:07:32 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,22 @@ void	find_min_max(long *stack, long *min_max)
 			min_max[1] = stack[i];
 		i++;
 	}
+}
+
+long	find_max(long *stack)
+{
+		int i;
+	int max;
+
+	max = stack[0];
+	i = 1;
+	while(stack[i])
+	{
+		if (stack[i] > max)
+			max = stack[i];
+		i++;
+	}
+	return (max);
 }
 
 long	find_min(long *stack)

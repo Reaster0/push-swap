@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:24:50 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/24 16:39:06 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/28 19:07:50 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,14 @@ int			error(int ret);
 void		*ft_bzero(void *str, size_t len);
 t_stacks	*convert_stack(int argc, char **argv);
 int			check_error(int argc, char **argv);
+void		index_plus(long *stack, int *index);
+void		index_minus(long *stack, int *index);
+
 
 int			stack_size(long *stack);
 void		find_min_max(long *stack, long *min_max);
 long		find_min(long *stack);
+long		find_max(long *stack);
 long		where_in(long *stack, long nbr);
 long		find_next(long *stack, long current);
 long		find_prev(long *stack, long current);
@@ -77,6 +81,7 @@ void algo_for_3(t_stacks *stack);
 void algo_for_5(t_stacks *stack);
 void algo_merge(t_stacks *stack);
 void third_algo(t_stacks *stack);
-void insertionv2(t_stacks * stack, long size);
+void insertionv2(t_stacks *stack, long size);
+long push_best(t_stacks *stack);
 
 #endif

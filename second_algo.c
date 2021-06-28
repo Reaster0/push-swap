@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 18:44:36 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/25 19:05:15 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/28 14:07:56 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ void best_rotate_b(t_stacks *stack, int index, long goal)
 	index2 = index;
 	ij[0] = 0;
 	ij[1] = 0;
-
-	//print_stacks(stack);
 	
 	while (stack->b[index] != goal)
 	{

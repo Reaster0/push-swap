@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:17:21 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/25 19:08:50 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/06/28 15:29:56 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	ft_magic(t_stacks *stacks, int nbr)
 		//third_algo(stacks);
 		//algo_merge(stacks);
 		insertionv2(stacks, stacks->size);
+		//push_best(stacks);
 
 	//print_stacks(stacks);
 
