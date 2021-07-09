@@ -6,7 +6,7 @@
 #    By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/31 02:21:14 by earnaud           #+#    #+#              #
-#    Updated: 2021/06/28 15:32:16 by earnaud          ###   ########.fr        #
+#    Updated: 2021/07/09 17:09:20 by earnaud          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,5 +42,9 @@ fclean:		clean
 			$(RM) $(NAME)
 
 re:			fclean all
+
+test:		RAND:=$(shell ./generator/rand_generator 100)
+test:		all
+			@./push_swap $(RAND) | wc 
 
 .PHONY:		all clean fclean re

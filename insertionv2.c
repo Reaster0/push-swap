@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 16:02:02 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/28 16:38:53 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/09 18:15:16 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -254,9 +254,14 @@ void insertionv2(t_stacks *stack, long size)
 	long_consecutive(stack, best_index, list);
 	push_b_unsorted(stack, list);
 
-
 	print_stacks(stack);
-	push_best(stack);
+	while (stack->b[0])
+	{
+		push_best(stack);
+		print_stacks(stack);
+	}
+	//while(stack->b[0])
+	//insertion_loop(stack, push_best(stack));
 
 	// while (stack->b[0])
 	// {

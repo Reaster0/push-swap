@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 11:32:28 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/28 19:14:54 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/09 18:22:52 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,18 @@ int	count_steps(long *list, long value)
 	int i[2];
 	int result[2];
 	int before;
+	long min_max[2];
 
 	i[0] = 0;
 	i[1] = stack_nb(list);
 	before = i[1];
 	result[0] = 0;
 	result[1] = 0;
+	find_min_max(list, min_max);
 	while(i[0] != stack_nb(list))
 	{
-		if ((list[i[0]] < value && list[before] > value) || (list[i[0]] > value && list[before] > value) || (list[i[0]] < value && list[before] < value))
-			break;
-																			
+		if ((list[i[0]] < value && list[before] > value) || (list[i[0]] == min_max[1] && value > min_max[1]) || (list[i[0]] == min_max[1] && value < min_max[0]))
+			break;											
 		index_plus(list, &before);
 		i[0]++;
 		result[0]++;
@@ -71,13 +72,35 @@ int	count_steps(long *list, long value)
 	before = 0;
 	while(i[1] != 0)
 	{
-		index_minus(list, &before);
-		if ((list[i[1]] > value && list[before] < value) || (list[i[1]] > value && list[before] > value) || (list[i[0]] < value && list[before] < value))
+		if ((list[i[1]] > value && list[before] < value) || (list[i[1]] == min_max[0] && value > min_max[1]) || (list[i[1]] == min_max[0] && value < min_max[0]))
 			break;
+		index_minus(list, &before);
 		i[1]--;
-		result[1]--;
+		result[1]--; //maybe don't minus so i don't need to use abs later
 	}
 	return(ft_min(result));
+}
+
+int		where_to_insert(long *list, long value)
+{
+	int i[3];
+	int pos;
+
+	i[0] = 0;
+	i[1] = stack_nb(list);
+	i[2] = 1;
+	pos = 0;
+	while (list[i[0]])
+	{
+		if ((value > list[i[1]] && value < list[i[0]]) || (list[i[1]] > list[i[0]] && (value < list[i[0]] || value > list[i[1]])))
+		pos = i[2];
+		i[0]++;
+		index_plus(list, i + 1);
+		i[2]++;
+	}
+	if (pos > stack_nb(list) / 2)
+		pos -= stack_nb(list);
+	return (pos); 
 }
 
 // int		count_steps(long *list, long value)
@@ -107,7 +130,7 @@ int	count_steps(long *list, long value)
 
 
 //fait le total d'actions pour decaller b et a 
-int		best_action(int *count_a_b)
+int		best_action(int *count_a_b) 
 {
 	if (count_a_b[0] > 0 && count_a_b[1] > 0)
 		return (ft_abs(count_a_b[0]) + ft_abs(count_a_b[1] - ft_min(count_a_b)));
@@ -115,34 +138,93 @@ int		best_action(int *count_a_b)
 		return (ft_abs(count_a_b[0]) + ft_abs(count_a_b[1]) + ft_max(count_a_b));
 	else
 		return(ft_abs(count_a_b[0]) + ft_abs(count_a_b[1]));
-	return(0);
+	return (0);
 }
 
-long	push_best(t_stacks *stack)
+
+void	rotate_both(t_stacks *stack, int *min_a_b)
+{
+	while (min_a_b[0] > 0 && min_a_b[1] > 0)
+	{
+		switch_rrr(stack);
+		min_a_b[0]--;
+		min_a_b[1]--;
+	}
+	while (min_a_b[0] < 0 && min_a_b[1] < 0)
+	{
+		switch_rr(stack);
+		min_a_b[0]++;
+		min_a_b[1]++;
+	}
+}
+
+void	rotate_simple(t_stacks *stack, int *min_a_b)
+{
+	while (min_a_b[0] > 0)
+	{
+		switch_rra(stack, 1);
+		min_a_b[0]--;
+	}
+	while (min_a_b[0] < 0)
+	{
+		switch_ra(stack, 1);
+		min_a_b[0]++;
+	}
+	while (min_a_b[1] > 0)
+	{
+		switch_rrb(stack, 1);
+		min_a_b[1]--;
+	}
+	while (min_a_b[1] < 0)
+	{
+		switch_rb(stack, 1);
+		min_a_b[1]++;
+	}
+}
+
+void	insertion_loop(t_stacks *stacks, long best_value, int *min_a_b)
+{
+	int debug = 0;
+
+	if (min_a_b[1] > 0 && min_a_b[0] > 0 || (min_a_b[1] < 0 && min_a_b[0] < 0))
+	rotate_both(stacks, min_a_b);
+	rotate_simple(stacks, min_a_b);
+	if (debug)
+		print_stacks(stacks);
+	switch_pa(stacks, 1);
+}
+
+void	push_best(t_stacks *stack)
 {
 	int i;
-	int steps_a;
-	int min;
+	int min_a_b[2];
 	int result;
-	int temp;
+	int temp[2];
 	int count_a_b[2];
+	//int osef;
 
 	i = 0;
 	count_a_b[1] = 0;
-	min = __INT_MAX__;
+	temp[1] = __INT_MAX__;
 	while(stack->b[i])
 	{
-		count_a_b[0] = count_steps(stack->a, stack->b[i]); //issue here when stack->[i] == 6
+		count_a_b[0] = where_to_insert(stack->a, stack->b[i]);
+		//osef = count_steps(stack->a, stack->b[i]);
+		//count_a_b[0] = count_steps(stack->a, stack->b[i]);
 		if (count_a_b[1] > stack_nb(stack->b) / 2)
 		count_a_b[1] -= stack_nb(stack->b);
-		temp = best_action(count_a_b);
-		if (temp < min)
+		temp[0] = best_action(count_a_b);
+		if (temp[0] < temp[1])
 		{
+			temp[1] = temp[0];
 			result = stack->b[i];
-			min = temp;
+			min_a_b[0] = count_a_b[0];
+			min_a_b[1] = count_a_b[1];
 		}
 		i++;
 		count_a_b[1]++;
 	}
-	return (result);
+	if (min_a_b[1] >=0 && result != stack->b[stack_nb(stack->b)])
+		min_a_b[1]++;
+	insertion_loop(stack, result, min_a_b);
 }
