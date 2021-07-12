@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 16:02:02 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/09 18:15:16 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/12 16:06:02 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,7 +248,10 @@ void insertionv2(t_stacks *stack, long size)
 	int best_index;
 	long list[size];
 	long min_max[2];
+	long *sorted;
 
+	sorted = malloc(sizeof(long) * (stack->size + 1));
+	find_sort(stack->a, size, sorted);
 	reset_list(list, size);
 	best_index = long_consecutive_start(stack);
 	long_consecutive(stack, best_index, list);
@@ -257,9 +260,12 @@ void insertionv2(t_stacks *stack, long size)
 	print_stacks(stack);
 	while (stack->b[0])
 	{
-		push_best(stack);
+		push_best(stack, sorted);
 		print_stacks(stack);
 	}
+
+		print_stacks(stack);
+	
 	//while(stack->b[0])
 	//insertion_loop(stack, push_best(stack));
 

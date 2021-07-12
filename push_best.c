@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_a_best.c                                      :+:      :+:    :+:   */
+/*   push_best.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 11:32:28 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/09 18:22:52 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/12 17:11:56 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,35 +19,20 @@ int	ft_abs(int x)
 	return (x);
 }
 
-int ft_min(int *duo)
+int ft_min(int a, int b)
 {
-	if (ft_abs(duo[0]) < ft_abs(duo[1]))
-		return (duo[0]);
-	return (duo[1]);
+	if (ft_abs(a) < ft_abs(b))
+		return (a);
+	return (b);
 }
 
-int ft_max(int *duo)
+int ft_max(int a, int b)
 {
-	if (ft_abs(duo[0]) > ft_abs(duo[1]))
-		return (duo[0]);
-	return (duo[1]);
+	if (ft_abs(a) > ft_abs(b))
+		return (a);
+	return (b);
 }
 
-// compte le nombre de steps pour mettre b dans a
-//    |  0|   | 43|
-//    |  0|   | 95|
-//    |  0|   | 32|
-//    |124|   |101|
-//    |125|   | 22|
-//    |126|   |105|
-//    |132|   | 36|
-//    |141|   |106|
-//    |145|   | 55|
-//    | 14|   | 49|
-//    | 85|   | 47|
-//    |100|   | 62|
-//    |121|   | 51|
-//fix the case max and min value for both if
 int	count_steps(long *list, long value)
 {
 	int i[2];
@@ -67,7 +52,7 @@ int	count_steps(long *list, long value)
 			break;											
 		index_plus(list, &before);
 		i[0]++;
-		result[0]++;
+		result[0]--;
 	}
 	before = 0;
 	while(i[1] != 0)
@@ -76,32 +61,11 @@ int	count_steps(long *list, long value)
 			break;
 		index_minus(list, &before);
 		i[1]--;
-		result[1]--; //maybe don't minus so i don't need to use abs later
+		result[1]++; //maybe don't minus so i don't need to use abs later
 	}
-	return(ft_min(result));
+	return(ft_min(result[0], result[1]));
 }
 
-int		where_to_insert(long *list, long value)
-{
-	int i[3];
-	int pos;
-
-	i[0] = 0;
-	i[1] = stack_nb(list);
-	i[2] = 1;
-	pos = 0;
-	while (list[i[0]])
-	{
-		if ((value > list[i[1]] && value < list[i[0]]) || (list[i[1]] > list[i[0]] && (value < list[i[0]] || value > list[i[1]])))
-		pos = i[2];
-		i[0]++;
-		index_plus(list, i + 1);
-		i[2]++;
-	}
-	if (pos > stack_nb(list) / 2)
-		pos -= stack_nb(list);
-	return (pos); 
-}
 
 // int		count_steps(long *list, long value)
 // {
@@ -130,14 +94,14 @@ int		where_to_insert(long *list, long value)
 
 
 //fait le total d'actions pour decaller b et a 
-int		best_action(int *count_a_b) 
+int		best_action(int *count_a_b, int action_b) 
 {
 	if (count_a_b[0] > 0 && count_a_b[1] > 0)
-		return (ft_abs(count_a_b[0]) + ft_abs(count_a_b[1] - ft_min(count_a_b)));
+		return (ft_abs(count_a_b[0]) + ft_abs(action_b) - ft_min(count_a_b[0], action_b));
 	else if (count_a_b[0] < 0 && count_a_b[1] < 0)
-		return (ft_abs(count_a_b[0]) + ft_abs(count_a_b[1]) + ft_max(count_a_b));
+		return (ft_abs(count_a_b[0]) + ft_abs(action_b) + ft_max(count_a_b[0], action_b));
 	else
-		return(ft_abs(count_a_b[0]) + ft_abs(count_a_b[1]));
+		return(ft_abs(count_a_b[0]) + ft_abs(action_b));
 	return (0);
 }
 
@@ -194,37 +158,71 @@ void	insertion_loop(t_stacks *stacks, long best_value, int *min_a_b)
 	switch_pa(stacks, 1);
 }
 
-void	push_best(t_stacks *stack)
+int		where_to_insert(long *list_a, long c_index_b, long *sorted)
+{
+	int i[3];
+	int pos;
+	long temp;
+	long prev;
+	int end;
+	
+	end = 0;
+	i[0] = stack_nb(list_a);
+	i[1] = i[0];
+	index_minus(list_a, i + 1);
+	i[2] = 1;
+	temp = where_in(sorted, list_a[i[1]]);
+	prev = where_in(sorted, list_a[i[0]]);
+	pos = 0;
+	while (list_a[i[0]] && !end)
+	{
+		if (i[1] == -1)
+		{
+			i[1] = stack_nb(list_a);
+			end = 1;
+		}
+		if ((c_index_b > prev && c_index_b < temp) || (prev > temp && (c_index_b < temp || c_index_b > prev)))
+		pos = i[2];
+		i[0]--;
+		i[1]--;
+		i[2]++;
+		temp = where_in(sorted, list_a[i[1]]);
+		prev = where_in(sorted, list_a[i[0]]);
+	}
+	if (pos > stack_size(list_a) / 2)
+		pos -= stack_size(list_a);
+	return (pos); 
+}
+
+void	push_best(t_stacks *stack, long *sorted)
 {
 	int i;
 	int min_a_b[2];
 	int result;
 	int temp[2];
 	int count_a_b[2];
-	//int osef;
+	int action_b;
 
-	i = 0;
-	count_a_b[1] = 0;
+	action_b = 0;
+	i = stack_nb(stack->b);
 	temp[1] = __INT_MAX__;
-	while(stack->b[i])
+	while(i >= 0)
 	{
-		count_a_b[0] = where_to_insert(stack->a, stack->b[i]);
-		//osef = count_steps(stack->a, stack->b[i]);
+		count_a_b[0] = where_to_insert(stack->a, where_in(sorted, stack->b[i]), sorted);
 		//count_a_b[0] = count_steps(stack->a, stack->b[i]);
-		if (count_a_b[1] > stack_nb(stack->b) / 2)
-		count_a_b[1] -= stack_nb(stack->b);
-		temp[0] = best_action(count_a_b);
+		action_b = count_a_b[1];
+		if (count_a_b[1] > stack_size(stack->b) / 2)
+		action_b -= stack_size(stack->b);
+		temp[0] = best_action(count_a_b, action_b);
 		if (temp[0] < temp[1])
 		{
 			temp[1] = temp[0];
 			result = stack->b[i];
 			min_a_b[0] = count_a_b[0];
-			min_a_b[1] = count_a_b[1];
+			min_a_b[1] = action_b;
 		}
-		i++;
+		i--;
 		count_a_b[1]++;
 	}
-	if (min_a_b[1] >=0 && result != stack->b[stack_nb(stack->b)])
-		min_a_b[1]++;
 	insertion_loop(stack, result, min_a_b);
 }

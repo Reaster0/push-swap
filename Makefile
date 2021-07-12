@@ -6,7 +6,7 @@
 #    By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/31 02:21:14 by earnaud           #+#    #+#              #
-#    Updated: 2021/07/09 17:09:20 by earnaud          ###   ########.fr        #
+#    Updated: 2021/07/12 13:48:56 by earnaud          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS		= main.c \
 				algo_merge.c \
 				third_algo.c \
 				insertionv2.c \
-				push_a_best.c
+				push_best.c
 
 OBJS		= $(SRCS:.c=.o)
 NAME		= push_swap
