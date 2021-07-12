@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 11:32:28 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/12 17:11:56 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/12 19:37:17 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,13 +110,13 @@ void	rotate_both(t_stacks *stack, int *min_a_b)
 {
 	while (min_a_b[0] > 0 && min_a_b[1] > 0)
 	{
-		switch_rrr(stack);
+		switch_rr(stack);
 		min_a_b[0]--;
 		min_a_b[1]--;
 	}
 	while (min_a_b[0] < 0 && min_a_b[1] < 0)
 	{
-		switch_rr(stack);
+		switch_rrr(stack);
 		min_a_b[0]++;
 		min_a_b[1]++;
 	}
@@ -126,22 +126,22 @@ void	rotate_simple(t_stacks *stack, int *min_a_b)
 {
 	while (min_a_b[0] > 0)
 	{
-		switch_rra(stack, 1);
+		switch_ra(stack, 1);
 		min_a_b[0]--;
 	}
 	while (min_a_b[0] < 0)
 	{
-		switch_ra(stack, 1);
+		switch_rra(stack, 1);
 		min_a_b[0]++;
 	}
 	while (min_a_b[1] > 0)
 	{
-		switch_rrb(stack, 1);
+		switch_rb(stack, 1);
 		min_a_b[1]--;
 	}
 	while (min_a_b[1] < 0)
 	{
-		switch_rb(stack, 1);
+		switch_rrb(stack, 1);
 		min_a_b[1]++;
 	}
 }
@@ -179,6 +179,7 @@ int		where_to_insert(long *list_a, long c_index_b, long *sorted)
 		if (i[1] == -1)
 		{
 			i[1] = stack_nb(list_a);
+			temp = where_in(sorted, list_a[i[1]]);
 			end = 1;
 		}
 		if ((c_index_b > prev && c_index_b < temp) || (prev > temp && (c_index_b < temp || c_index_b > prev)))
@@ -204,6 +205,7 @@ void	push_best(t_stacks *stack, long *sorted)
 	int action_b;
 
 	action_b = 0;
+	count_a_b[1] = 0;
 	i = stack_nb(stack->b);
 	temp[1] = __INT_MAX__;
 	while(i >= 0)

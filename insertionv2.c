@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 16:02:02 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/12 16:06:02 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/12 20:05:29 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -257,25 +257,16 @@ void insertionv2(t_stacks *stack, long size)
 	long_consecutive(stack, best_index, list);
 	push_b_unsorted(stack, list);
 
-	print_stacks(stack);
+//	print_stacks(stack);
 	while (stack->b[0])
 	{
 		push_best(stack, sorted);
-		print_stacks(stack);
+		//print_stacks(stack);
 	}
-
-		print_stacks(stack);
-	
-	//while(stack->b[0])
-	//insertion_loop(stack, push_best(stack));
-
-	// while (stack->b[0])
-	// {
-	// 	while (!good_place_top(stack->a, stack->b[stack_nb(stack->b)], stack_nb(stack->a)))
-	// 		best_rotate_a_v2(stack, stack->b[stack_nb(stack->b)]);
-	// 	switch_pa(stack, 1);
-	// }
-	// find_min_max(stack->a, min_max);
-	// while (stack->a[0] != min_max[1])
-	// 	best_rotate_a(stack, 0, min_max[1]);
+	//	print_stacks(stack);
+	while (stack->a[stack_nb(stack->a)] != find_min(stack->a))
+	{
+		best_rotate_a(stack, stack_nb(stack->a), find_min(stack->a));
+	}
+	//	print_stacks(stack);
 }	
