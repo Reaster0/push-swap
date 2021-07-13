@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 11:32:28 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/13 16:27:11 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/13 16:46:06 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	count_steps(long *list, long value)
 			break;
 		index_minus(list, &before);
 		i[1]--;
-		result[1]++; //maybe don't minus so i don't need to use abs later
+		result[1]++;
 	}
 	return(ft_min(result[0], result[1]));
 }

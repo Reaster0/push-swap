@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 16:02:02 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/13 16:23:42 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/13 19:01:58 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,48 +111,6 @@ void push_b_unsorted(t_stacks *stack, long *list)
 	}
 }
 
-// int good_place_top(long *stack, long value, int index)
-// {
-// 	int current;
-
-// 	current = index;
-// 	index_plus(stack, &index);
-// 	if ((stack[current] > value && (stack[index] < value || stack[index] > stack[current]))  || !stack[1])
-// 		return (1);
-// 	else
-// 		return (0);
-// }
-
-// void best_rotate_a_v2(t_stacks *stack, long value)
-// {
-// 	int ij[2];
-// 	int index2;
-// 	int index;
-
-// 	index = stack_nb(stack->a);
-// 	index2 = index;
-// 	ij[0] = 0;
-// 	ij[1] = 0;
-// 	while (!good_place_top(stack->a, value, index))
-// 	{
-// 		index--;
-// 		ij[0]++;
-// 		if (index == -1)
-// 			index = stack_nb(stack->a);
-// 	}
-// 	while (!good_place_top(stack->a, value, index2))
-// 	{
-// 		index2++;
-// 		ij[1]++;
-// 		if (index2 == stack_nb(stack->a) + 1)
-// 			index2 = 0;
-// 	}
-// 	if (ij[0] < ij[1])
-// 		switch_ra(stack, 1);
-// 	else
-// 		switch_rra(stack, 1);	
-// }
-
 void insertionv2(t_stacks *stack, long size)
 {
 	int best_index;
@@ -168,11 +126,7 @@ void insertionv2(t_stacks *stack, long size)
 	push_b_unsorted(stack, list);
 
 	while (stack->b[0])
-	{
 		push_best(stack, sorted);
-		//print_stacks(stack);
-	}
-	//	print_stacks(stack);
 	while (stack->a[stack_nb(stack->a)] != find_min(stack->a))
 		best_rotate_a(stack, stack_nb(stack->a), find_min(stack->a));
 	//	print_stacks(stack);
