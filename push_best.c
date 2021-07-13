@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 11:32:28 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/13 16:46:06 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/13 19:31:14 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ int		best_action(int *count_a_b, int action_b)
 		return(ft_abs(count_a_b[0]) + ft_abs(action_b));
 	return (0);
 }
-
 
 void	rotate_both(t_stacks *stack, int *min_a_b)
 {
@@ -178,12 +177,12 @@ int		where_to_insert(long *list_a, long c_index_b, long *sorted)
 	pos = 0;
 	while (list_a[i[0]] && !end)
 	{
-		if (i[1] == -1)
-		{
-			i[1] = stack_nb(list_a);
-			temp = where_in(sorted, list_a[i[1]]);
-			end = 1;
-		}
+		 if (i[1] == -1)
+		 {
+		 	i[1] = stack_nb(list_a);
+		 	temp = where_in(sorted, list_a[i[1]]);
+		 	end = 1;
+		 }
 		if ((c_index_b > prev && c_index_b < temp) || (prev > temp && (c_index_b < temp || c_index_b > prev)))
 		pos = i[2];
 		i[0]--;
@@ -201,7 +200,7 @@ void	push_best(t_stacks *stack, long *sorted)
 {
 	int i;
 	int min_a_b[2];
-	int result;
+	int best_case;
 	int temp[2];
 	int count_a_b[2];
 	int action_b;
@@ -213,7 +212,6 @@ void	push_best(t_stacks *stack, long *sorted)
 	while(i >= 0)
 	{
 		count_a_b[0] = where_to_insert(stack->a, where_in(sorted, stack->b[i]), sorted);
-		//count_a_b[0] = count_steps(stack->a, stack->b[i]);
 		action_b = count_a_b[1];
 		if (count_a_b[1] > stack_size(stack->b) / 2)
 		action_b -= stack_size(stack->b);
@@ -221,12 +219,12 @@ void	push_best(t_stacks *stack, long *sorted)
 		if (temp[0] < temp[1])
 		{
 			temp[1] = temp[0];
-			result = stack->b[i];
+			best_case = stack->b[i];
 			min_a_b[0] = count_a_b[0];
 			min_a_b[1] = action_b;
 		}
 		i--;
 		count_a_b[1]++;
 	}
-	insertion_loop(stack, result, min_a_b);
+	insertion_loop(stack, best_case, min_a_b);
 }

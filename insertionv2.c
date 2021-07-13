@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 16:02:02 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/13 19:01:58 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/13 19:28:44 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,10 @@ void insertionv2(t_stacks *stack, long size)
 	push_b_unsorted(stack, list);
 
 	while (stack->b[0])
+	{
+		print_stacks(stack);
 		push_best(stack, sorted);
+	}
 	while (stack->a[stack_nb(stack->a)] != find_min(stack->a))
 		best_rotate_a(stack, stack_nb(stack->a), find_min(stack->a));
 	//	print_stacks(stack);
