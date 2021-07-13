@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 11:32:28 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/12 19:37:17 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/13 16:27:11 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,33 +66,6 @@ int	count_steps(long *list, long value)
 	return(ft_min(result[0], result[1]));
 }
 
-
-// int		count_steps(long *list, long value)
-// {
-// 	int i[2];
-// 	int before;
-// 	int steps;
-
-// 	i[0] = 0;
-// 	i[1] = 1;
-// 	steps = 0;
-// 	before = i[0];
-// 	index_minus(list, &before);
-// 	while(list[i[0]] && before)
-// 	{
-// 		if ((value > list[before] && value < list[i[0]]) || (list[before] > list[i[0]] && value < list[i[0]] || value > list[before]))
-// 			steps = i[1];
-		
-// 		i[0]++;
-// 		before++;
-// 		i[1]++;
-// 	}
-// 	if (steps > stack_nb(list) / 2)
-// 		steps -= stack_nb(list);
-// 	return (steps);
-// }
-
-
 //fait le total d'actions pour decaller b et a 
 int		best_action(int *count_a_b, int action_b) 
 {
@@ -144,6 +117,35 @@ void	rotate_simple(t_stacks *stack, int *min_a_b)
 		switch_rrb(stack, 1);
 		min_a_b[1]++;
 	}
+}
+
+void best_rotate_a(t_stacks *stack, int index, long goal)
+{
+	int ij[2];
+	int index2;
+
+	index2 = index;
+	ij[0] = 0;
+	ij[1] = 0;
+
+	while (stack->a[index] != goal)
+	{
+		index--;
+		ij[0]++;
+		if (index == -1)
+			index = stack_nb(stack->a);
+	}
+	while (stack->a[index2] != goal)
+	{
+		index2++;
+		ij[1]++;
+		if (index2 == stack_nb(stack->a) + 1)
+			index2 = 0;
+	}
+	if (ij[0] < ij[1])
+		switch_ra(stack, 1);
+	else
+		switch_rra(stack, 1);	
 }
 
 void	insertion_loop(t_stacks *stacks, long best_value, int *min_a_b)

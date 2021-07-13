@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 16:02:02 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/13 14:45:43 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/13 16:23:42 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,27 +43,6 @@ void reset_list(long *list, long size)
 		list[i] = 0;
 		i++;
 	}
-}
-
-void copy_list(long *dest, long *src)
-{
-	int i;
-
-	i = 0;
-	while(src[i])
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = 0;
-}
-
-void copy_one(long *list, long nbr)
-{
-	if (stack_nb(list) == -1)
-		list[0] = nbr;
-	else
-		list[stack_nb(list) + 1] = nbr;
 }
 
 int long_consecutive(t_stacks *stack, int index, long *list)
@@ -132,48 +111,47 @@ void push_b_unsorted(t_stacks *stack, long *list)
 	}
 }
 
+// int good_place_top(long *stack, long value, int index)
+// {
+// 	int current;
 
-int good_place_top(long *stack, long value, int index)
-{
-	int current;
+// 	current = index;
+// 	index_plus(stack, &index);
+// 	if ((stack[current] > value && (stack[index] < value || stack[index] > stack[current]))  || !stack[1])
+// 		return (1);
+// 	else
+// 		return (0);
+// }
 
-	current = index;
-	index_plus(stack, &index);
-	if ((stack[current] > value && (stack[index] < value || stack[index] > stack[current]))  || !stack[1])
-		return (1);
-	else
-		return (0);
-}
+// void best_rotate_a_v2(t_stacks *stack, long value)
+// {
+// 	int ij[2];
+// 	int index2;
+// 	int index;
 
-void best_rotate_a_v2(t_stacks *stack, long value)
-{
-	int ij[2];
-	int index2;
-	int index;
-
-	index = stack_nb(stack->a);
-	index2 = index;
-	ij[0] = 0;
-	ij[1] = 0;
-	while (!good_place_top(stack->a, value, index))
-	{
-		index--;
-		ij[0]++;
-		if (index == -1)
-			index = stack_nb(stack->a);
-	}
-	while (!good_place_top(stack->a, value, index2))
-	{
-		index2++;
-		ij[1]++;
-		if (index2 == stack_nb(stack->a) + 1)
-			index2 = 0;
-	}
-	if (ij[0] < ij[1])
-		switch_ra(stack, 1);
-	else
-		switch_rra(stack, 1);	
-}
+// 	index = stack_nb(stack->a);
+// 	index2 = index;
+// 	ij[0] = 0;
+// 	ij[1] = 0;
+// 	while (!good_place_top(stack->a, value, index))
+// 	{
+// 		index--;
+// 		ij[0]++;
+// 		if (index == -1)
+// 			index = stack_nb(stack->a);
+// 	}
+// 	while (!good_place_top(stack->a, value, index2))
+// 	{
+// 		index2++;
+// 		ij[1]++;
+// 		if (index2 == stack_nb(stack->a) + 1)
+// 			index2 = 0;
+// 	}
+// 	if (ij[0] < ij[1])
+// 		switch_ra(stack, 1);
+// 	else
+// 		switch_rra(stack, 1);	
+// }
 
 void insertionv2(t_stacks *stack, long size)
 {
@@ -189,7 +167,6 @@ void insertionv2(t_stacks *stack, long size)
 	long_consecutive(stack, best_index, list);
 	push_b_unsorted(stack, list);
 
-//	print_stacks(stack);
 	while (stack->b[0])
 	{
 		push_best(stack, sorted);
@@ -197,8 +174,6 @@ void insertionv2(t_stacks *stack, long size)
 	}
 	//	print_stacks(stack);
 	while (stack->a[stack_nb(stack->a)] != find_min(stack->a))
-	{
 		best_rotate_a(stack, stack_nb(stack->a), find_min(stack->a));
-	}
 	//	print_stacks(stack);
 }	

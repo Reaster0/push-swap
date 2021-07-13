@@ -6,7 +6,7 @@
 #    By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/31 02:21:14 by earnaud           #+#    #+#              #
-#    Updated: 2021/07/13 13:36:05 by earnaud          ###   ########.fr        #
+#    Updated: 2021/07/13 16:35:54 by earnaud          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,8 @@ SRCS		= main.c \
 				utils.c \
 				utils2.c \
 				finder.c \
-				first_algo.c \
-				second_algo.c \
 				algo_for_3.c \
 				algo_for_5.c \
-				algo_merge.c \
-				third_algo.c \
 				insertionv2.c \
 				push_best.c
 

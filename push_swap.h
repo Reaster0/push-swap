@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:24:50 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/12 13:48:24 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/13 16:24:48 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,29 +60,17 @@ void		index_minus(long *stack, int *index);
 int			stack_size(long *stack);
 void		find_min_max(long *stack, long *min_max);
 long		find_min(long *stack);
-long		find_max(long *stack);
 long		where_in(long *stack, long nbr);
 long		find_next(long *stack, long current);
-long		find_prev(long *stack, long current);
-long		median_value(long *stack, int size);
-void		get_sorted(long *stack, long *result);
 int			check_sorted(t_stacks *stacks);
 int			there_min(long *stack, long pivot);
 void		print_stacks(t_stacks *stacks);
 void		print_list(long *stack);
-void		best_rotate_b(t_stacks *stack, int index, long goal);
 void		best_rotate_a(t_stacks *stack, int index, long goal);
-void		best_rotate_a_v2(t_stacks *stack, long value);
-void		best_rotate_split(t_stacks *stack, int index, long median);
-void		split_half(t_stacks *stack);
-int			best_place(long *stack, long value, long index);
 void		find_sort(long *stack, int size, long *sorted);
 
-void second_algo(t_stacks *stack);
 void algo_for_3(t_stacks *stack);
 void algo_for_5(t_stacks *stack);
-void algo_merge(t_stacks *stack);
-void third_algo(t_stacks *stack);
 void insertionv2(t_stacks *stack, long size);
 void push_best(t_stacks *stack, long *sorted);
 

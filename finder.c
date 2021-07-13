@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 15:28:59 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/28 19:07:32 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/13 16:25:25 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,6 @@ void	find_min_max(long *stack, long *min_max)
 			min_max[1] = stack[i];
 		i++;
 	}
-}
-
-long	find_max(long *stack)
-{
-		int i;
-	int max;
-
-	max = stack[0];
-	i = 1;
-	while(stack[i])
-	{
-		if (stack[i] > max)
-			max = stack[i];
-		i++;
-	}
-	return (max);
 }
 
 long	find_min(long *stack)
@@ -92,23 +76,6 @@ long	find_next(long *stack, long current)
 	return (result);
 }
 
-long	find_prev(long *stack, long current)
-{
-	int i;
-	int result;
-	int next;
-	
-	result = 0;
-	i = 0;
-	while (stack[i])
-	{
-		if (stack[i] < current && (!result || stack[i] > result))
-		result = stack[i];
-		i++;
-	}
-	return (result);
-}
-
 void	find_sort(long *stack, int size, long *sorted)
 {
 	int i;
@@ -122,25 +89,6 @@ void	find_sort(long *stack, int size, long *sorted)
 		old = sorted[i];
 		i++;
 	}
-}
-
-long	median_value(long *stack, int size)
-{
-	int	i;
-	long temp[size + 1];
-	int old;
-
-	i = 0;
-	old = 0;
-	find_sort(stack, size, temp);
-	if (size % 2)
-	{
-		size = size / 2;
-		size++;
-	}
-	else
-		size = size / 2;
-	return (temp[size]);
 }
 
 int	check_sorted(t_stacks *stacks)
