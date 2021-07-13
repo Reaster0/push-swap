@@ -6,7 +6,7 @@
 #    By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/31 02:21:14 by earnaud           #+#    #+#              #
-#    Updated: 2021/07/12 13:48:56 by earnaud          ###   ########.fr        #
+#    Updated: 2021/07/13 13:36:05 by earnaud          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ fclean:		clean
 
 re:			fclean all
 
-test:		RAND:=$(shell ./generator/rand_generator 100)
+test:		RAND:=$(shell ./generator/rand_generator 500)
 test:		all
 			@./push_swap $(RAND) | wc 
 
