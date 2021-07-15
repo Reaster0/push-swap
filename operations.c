@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:56:25 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/15 16:18:34 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/15 22:20:46 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,8 @@ int	stack_size(long *stack)
 	int i;
 
 	i = 0;
+	if (!stack)
+		return (0);
 	while (stack[i])
 		i++;
 	return (i);
