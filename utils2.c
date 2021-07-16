@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 15:19:18 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/16 16:19:07 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/16 20:38:28 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,11 @@ int	check_error(int argc, char **argv)
 		return (1);
 	while (*argv)
 	{
-		if (other_than_num(*argv))
+		if ((other_than_num(*argv) && **argv != '-') || (**argv == '-'
+				&& other_than_num((*argv) + 1)))
 			return (1);
 		temp = ft_atoi(*argv);
-		if (temp > 2147483647 || temp < -2147483648)
+		if (temp > 2147483647 || temp < -2147483648 || !temp)
 			return (1);
 		argv++;
 	}

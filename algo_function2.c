@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/16 18:12:28 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/16 18:17:19 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/16 21:00:48 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int	find_cheaper_action(long *list_a, long c_index_b, long *sorted)
 					|| c_index_b > temp_prev[1])))
 			pos = i[2];
 		i[0]--;
+		if (i[0] == -1)
+			break;
 		index_minus(list_a, i + 1);
 		i[2]++;
 		temp_prev[0] = where_in(sorted, list_a[i[1]]);

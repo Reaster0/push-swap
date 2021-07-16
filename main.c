@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:17:21 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/16 15:44:31 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/16 20:38:03 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,28 @@ void	ft_magic(t_stacks *stacks, int nbr)
 		insertionv2(stacks, stacks->size);
 }
 
+int	check_double_in_a(t_stacks *stacks)
+{
+	long	temp;
+	int		i;
+	int		j;
+
+	j = stack_nb(stacks->a);
+	while (j >= 0)
+	{
+		i = stack_nb(stacks->a);
+		temp = stacks->a[j];
+		while (i >= 0)
+		{
+			if (temp == stacks->a[i] && i != j)
+				return (1);
+			i--;
+		}
+		j--;
+	}
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stacks	*stacks;
@@ -62,6 +84,13 @@ int	main(int argc, char **argv)
 	if (check_error(argc, argv + 1))
 		return (error(-1));
 	stacks = convert_stack(argc, argv + 1);
+	if (check_double_in_a(stacks))
+	{
+		free(stacks->a);
+		free(stacks->b);
+		free(stacks);
+		return (error(-1));
+	}
 	ft_magic(stacks, argc - 1);
 	free(stacks->a);
 	free(stacks->b);
