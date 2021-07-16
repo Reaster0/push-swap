@@ -6,22 +6,47 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 15:19:18 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/22 14:39:46 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/16 16:19:07 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	find_min_max(long *stack, long *min_max)
+{
+	int	i;
+
+	i = 1;
+	min_max[0] = stack[0];
+	min_max[1] = stack[0];
+	while (stack[i])
+	{
+		if (stack[i] < min_max[0])
+			min_max[0] = stack[i];
+		if (stack[i] > min_max[1])
+			min_max[1] = stack[i];
+		i++;
+	}
+}
+
+long	find_min(long *stack)
+{
+	int	i;
+	int	min;
+
+	min = stack[0];
+	i = 1;
+	while (stack[i])
+	{
+		if (stack[i] < min)
+			min = stack[i];
+		i++;
+	}
+	return (min);
+}
+
 void	*ft_bzero(void *str, size_t len)
 {
-	// 	size_t index;
-
-	// index = 0;
-	// while (index < len)
-	// {
-	// 	*(char *)(str + index) = 0;
-	// 	index++;
-	// }
 	size_t	i;
 
 	i = 0;
@@ -58,11 +83,11 @@ t_stacks	*convert_stack(int argc, char **argv)
 
 int	check_error(int argc, char **argv)
 {
-	long temp;
+	long	temp;
 
-	if (!argc)
+	if (argc <= 1)
 		return (1);
-	while(*argv)
+	while (*argv)
 	{
 		if (other_than_num(*argv))
 			return (1);

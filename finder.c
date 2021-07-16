@@ -6,48 +6,15 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 15:28:59 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/16 12:14:00 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/16 16:12:01 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	find_min_max(long *stack, long *min_max)
-{
-	int i;
-
-	i = 1;
-	min_max[0] = stack[0];
-	min_max[1] = stack[0];
-	while (stack[i])
-	{
-		if (stack[i] < min_max[0])
-			min_max[0] = stack[i];
-		if (stack[i] > min_max[1])
-			min_max[1] = stack[i];
-		i++;
-	}
-}
-
-long	find_min(long *stack)
-{
-	int i;
-	int min;
-
-	min = stack[0];
-	i = 1;
-	while(stack[i])
-	{
-		if (stack[i] < min)
-			min = stack[i];
-		i++;
-	}
-	return (min);
-}
-
 long	where_in(long *stack, long nbr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (stack[i])
@@ -61,15 +28,15 @@ long	where_in(long *stack, long nbr)
 
 long	find_next(long *stack, long current)
 {
-	int i;
-	int result;
-	
+	int	i;
+	int	result;
+
 	result = 0;
 	i = 0;
 	while (stack[i])
 	{
 		if (stack[i] > current && (!result || stack[i] < result))
-		result = stack[i];
+			result = stack[i];
 		i++;
 	}
 	return (result);
@@ -77,8 +44,8 @@ long	find_next(long *stack, long current)
 
 void	find_sort(long *stack, int size, long *sorted)
 {
-	int i;
-	int old;
+	int	i;
+	int	old;
 
 	i = 0;
 	old = 0;
@@ -92,14 +59,14 @@ void	find_sort(long *stack, int size, long *sorted)
 
 int	check_sorted(t_stacks *stacks)
 {
-	int i;
-	int j;
-	long *sorted;
+	int		i;
+	int		j;
+	long	*sorted;
 
 	i = 0;
 	j = stack_nb(stacks->a);
 	if (stacks->b[0])
-		return(0);
+		return (0);
 	sorted = malloc(sizeof(long) * (stacks->size + 1));
 	find_sort(stacks->a, stacks->size, sorted);
 	while (j >= 0 && stacks->a[j] && sorted[i])
@@ -107,7 +74,7 @@ int	check_sorted(t_stacks *stacks)
 		if (stacks->a[j] != sorted[i])
 		{
 			free(sorted);
-			return(0);
+			return (0);
 		}
 		i++;
 		j--;

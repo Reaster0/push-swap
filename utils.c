@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 16:10:59 by earnaud           #+#    #+#             */
-/*   Updated: 2021/06/07 16:07:17 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/16 16:14:25 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_isdigit(int c)
 
 void	get_sorted(long *stack, long *result)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	result[0] = find_next(stack, 0);
@@ -66,6 +66,6 @@ long	ft_atoi(const char *str)
 
 int	error(int ret)
 {
-	write(STDOUT_FILENO ,"Error\n", 6);
+	write(STDOUT_FILENO, "Error\n", 6);
 	return (ret);
 }
