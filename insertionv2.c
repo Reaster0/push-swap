@@ -6,14 +6,11 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 16:02:02 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/15 21:28:06 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/16 12:19:50 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-//trouver la plus grosse suite de nombre eparse danse la liste a et mettre tout le reste dans b, puis insertion sort into a
-
 
 void index_plus(long *stack, int *index)
 {
@@ -99,9 +96,6 @@ int long_consecutive_start(t_stacks *stack)
 
 void push_b_unsorted(t_stacks *stack, long *list)
 {
-	int i;
-
-	i = stack_nb(stack->a);
 	while (stack_nb(stack->a) > stack_nb(list))
 	{
 		if (where_in(list, stack->a[stack_nb(stack->a)]) == -1)
@@ -115,7 +109,6 @@ void insertionv2(t_stacks *stack, long size)
 {
 	int best_index;
 	long list[size];
-	long min_max[2];
 	long *sorted;
 
 	sorted = malloc(sizeof(long) * (stack->size + 1));
@@ -125,11 +118,7 @@ void insertionv2(t_stacks *stack, long size)
 	long_consecutive(stack, best_index, list);
 	push_b_unsorted(stack, list);
 	while (stack->b[0])
-	{
-	//	print_stacks(stack);
 		push_best(stack, sorted);
-	}
 	while (stack->a[stack_nb(stack->a)] != find_min(stack->a))
 		best_rotate_a(stack, stack_nb(stack->a), find_min(stack->a));
-	//	print_stacks(stack);
 }	

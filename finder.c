@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 15:28:59 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/13 16:25:25 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/16 12:14:00 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ long	find_next(long *stack, long current)
 {
 	int i;
 	int result;
-	int next;
 	
 	result = 0;
 	i = 0;

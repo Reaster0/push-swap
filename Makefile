@@ -6,7 +6,7 @@
 #    By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/31 02:21:14 by earnaud           #+#    #+#              #
-#    Updated: 2021/07/15 20:44:46 by earnaud          ###   ########.fr        #
+#    Updated: 2021/07/16 12:09:20 by earnaud          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRCS		= main.c \
 OBJS		= $(SRCS:.c=.o)
 NAME		= push_swap
 cc			= clang
-CFLAGS		= -g #-Wall -Wextra -Werror
+CFLAGS		= -g -Wall -Wextra -Werror
 %.o:		%.c
 			$(CC) $(CFLAGS) -c $< -o $@
 all:		$(NAME)
@@ -39,7 +39,7 @@ fclean:		clean
 
 re:			fclean all
 
-test:		RAND:=$(shell ./generator/rand_generator 100)
+test:		RAND:=$(shell ./generator/rand_generator 500)
 test:		all
 			test starting!
 			@./push_swap $(RAND) | wc 

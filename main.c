@@ -6,12 +6,11 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:17:21 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/13 18:53:36 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/16 12:13:37 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 void	print_list(long *stack)
 {
@@ -41,7 +40,7 @@ void	print_stacks(t_stacks *stacks)
 			printf("   |%3ld|   |0|\n", stacks->a[i]);
 		else
 			printf("   |%3ld|   |%3ld|\n", stacks->a[i], stacks->b[i]);
-			i--;
+		i--;
 	}
 	printf("\n----------------------\n----------------------\n");
 }
@@ -58,12 +57,14 @@ void	ft_magic(t_stacks *stacks, int nbr)
 
 int main(int argc, char **argv)
 {
-
 	t_stacks *stacks;
 	
 	if (check_error(argc, argv + 1))
 		return (error(-1));
 	stacks = convert_stack(argc, argv + 1);
 	ft_magic(stacks,argc - 1);
+	free(stacks->a);
+	free(stacks->b);
+	free(stacks);
 	return (0);
 }
