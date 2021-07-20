@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 16:02:02 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/16 20:52:07 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/20 15:35:20 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	reset_list(long *list, long size)
 	i = 0;
 	while (i <= size)
 	{
-		list[i] = 0;
+		list[i] = END_STACK;
 		i++;
 	}
 }
@@ -63,7 +63,7 @@ int	long_consecutive_start(t_stacks *stack)
 	i = 0;
 	index = 0;
 	max_values = 0;
-	while (stack->a[i])
+	while (stack->a[i] != END_STACK)
 	{
 		temp = long_consecutive(stack, i, NULL);
 		if (temp > max_values)
@@ -104,8 +104,13 @@ void	insertionv2(t_stacks *stack, long size)
 	best_index = long_consecutive_start(stack);
 	long_consecutive(stack, best_index, list);
 	push_b_unsorted(stack, list);
-	while (stack->b[0])
+	print_stacks(stack);
+	print_list(sorted);
+	while (stack->b[0] != END_STACK)
+	{
 		push_best(stack, sorted);
+		print_stacks(stack);
+	}
 	while (stack->a[stack_nb(stack->a)] != find_min(stack->a))
 		best_rotate_a(stack, stack_nb(stack->a), find_min(stack->a));
 	free(list);

@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:17:21 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/16 20:38:03 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/20 15:12:31 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	print_stacks(t_stacks *stacks)
 	while (i >= 0)
 	{
 		if (j == -1)
-			printf("   |%3ld|   |0|\n", stacks->a[i]);
+			printf("   |%3ld|   |not|\n", stacks->a[i]);
 		else
 			printf("   |%3ld|   |%3ld|\n", stacks->a[i], stacks->b[i]);
 		i--;
@@ -91,7 +91,9 @@ int	main(int argc, char **argv)
 		free(stacks);
 		return (error(-1));
 	}
+	print_stacks(stacks);
 	ft_magic(stacks, argc - 1);
+	print_stacks(stacks);
 	free(stacks->a);
 	free(stacks->b);
 	free(stacks);

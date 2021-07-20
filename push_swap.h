@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:24:50 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/16 20:09:39 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/20 15:29:13 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+# define END_STACK 3333333333
 
 typedef struct s_stacks
 {
@@ -41,7 +43,7 @@ int			ft_isdigit(int c);
 int			other_than_num(const char *str);
 long		ft_atoi(const char *str);
 int			error(int ret);
-void		*ft_bzero(void *str, size_t len);
+//void		*ft_bzero(void *str, size_t len);
 t_stacks	*convert_stack(int argc, char **argv);
 int			check_error(int argc, char **argv);
 void		index_plus(long *stack, int *index);

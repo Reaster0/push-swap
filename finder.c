@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 15:28:59 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/16 16:12:01 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/20 16:10:30 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,31 @@
 long	where_in(long *stack, long nbr)
 {
 	int	i;
+	int debug = 0;
 
 	i = 0;
-	while (stack[i])
+	while (stack[i] != END_STACK)
 	{
 		if (stack[i] == nbr)
 			return (i);
 		i++;
+		if (debug)
+			print_list(stack);
 	}
 	return (-1);
 }
 
 long	find_next(long *stack, long current)
 {
-	int	i;
-	int	result;
+	int		i;
+	long	result;
 
-	result = 0;
+	result = -2147483649;
+	//result = 0;
 	i = 0;
-	while (stack[i])
+	while (stack[i] != END_STACK)
 	{
-		if (stack[i] > current && (!result || stack[i] < result))
+		if (stack[i] > current && (result == -2147483649 || stack[i] < result))
 			result = stack[i];
 		i++;
 	}
@@ -44,11 +48,11 @@ long	find_next(long *stack, long current)
 
 void	find_sort(long *stack, int size, long *sorted)
 {
-	int	i;
-	int	old;
+	int		i;
+	long	old;
 
 	i = 0;
-	old = 0;
+	old = -2147483649;
 	while (i <= size)
 	{
 		sorted[i] = find_next(stack, old);

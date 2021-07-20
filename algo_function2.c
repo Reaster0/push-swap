@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/16 18:12:28 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/17 17:40:28 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/20 15:11:16 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 void	set_values(long *list_a, long *sorted, int *i, long *temp_prev)
 {
 	i[0] = stack_nb(list_a);
-	i[1] = stack_nb(list_a) - 1;
+	i[1] = stack_nb(list_a);// - 1; //ça va surement a -1 a un moment je devrais index minus
+	index_minus(list_a, i + 1);
 	i[2] = 1;
-	temp_prev[0] = where_in(sorted, list_a[i[1]]);
+	temp_prev[0] = where_in(sorted, list_a[i[1]]);  
 	temp_prev[1] = where_in(sorted, list_a[0]);
 }
 

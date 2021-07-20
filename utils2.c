@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 15:19:18 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/16 20:38:28 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/20 16:13:15 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	find_min_max(long *stack, long *min_max)
 	i = 1;
 	min_max[0] = stack[0];
 	min_max[1] = stack[0];
-	while (stack[i])
+	while (stack[i] != END_STACK)
 	{
 		if (stack[i] < min_max[0])
 			min_max[0] = stack[i];
@@ -36,7 +36,7 @@ long	find_min(long *stack)
 
 	min = stack[0];
 	i = 1;
-	while (stack[i])
+	while (stack[i] != END_STACK)
 	{
 		if (stack[i] < min)
 			min = stack[i];
@@ -45,18 +45,18 @@ long	find_min(long *stack)
 	return (min);
 }
 
-void	*ft_bzero(void *str, size_t len)
-{
-	size_t	i;
+// void	*ft_bzero(void *str, size_t len)
+// {
+// 	size_t	i;
 
-	i = 0;
-	while (i < len)
-	{
-		((unsigned char *)str)[i] = 0;
-		i++;
-	}
-	return (str);
-}
+// 	i = 0;
+// 	while (i < len)
+// 	{
+// 		((unsigned char *)str)[i] = 0;
+// 		i++;
+// 	}
+// 	return (str);
+// }
 
 t_stacks	*convert_stack(int argc, char **argv)
 {
@@ -68,13 +68,13 @@ t_stacks	*convert_stack(int argc, char **argv)
 	stack->a = malloc(sizeof(long) * (argc + 1));
 	stack->b = malloc(sizeof(long) * (argc + 1));
 	stack->size = argc - 1;
-	stack->a[i] = 0;
-	stack->b[i] = 0;
+	stack->a[i] = END_STACK;
+	stack->b[i] = END_STACK;
 	i--;
 	while (*argv)
 	{
 		stack->a[i] = ft_atoi(*argv);
-		stack->b[i] = 0;
+		stack->b[i] = END_STACK;
 		argv++;
 		i--;
 	}
@@ -93,7 +93,7 @@ int	check_error(int argc, char **argv)
 				&& other_than_num((*argv) + 1)))
 			return (1);
 		temp = ft_atoi(*argv);
-		if (temp > 2147483647 || temp < -2147483648 || !temp)
+		if (temp > 2147483647 || temp < -2147483648)
 			return (1);
 		argv++;
 	}
