@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 15:28:59 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/20 16:10:30 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/21 13:51:10 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	find_sort(long *stack, int size, long *sorted)
 
 	i = 0;
 	old = -2147483649;
-	while (i <= size)
+	while (i < size) //before it was i <= size
 	{
 		sorted[i] = find_next(stack, old);
 		old = sorted[i];

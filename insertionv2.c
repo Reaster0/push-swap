@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 16:02:02 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/20 15:35:20 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/21 13:54:54 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,14 @@ void	insertionv2(t_stacks *stack, long size)
 		return ;
 	sorted = malloc(sizeof(long) * (stack->size + 1));
 	if (!sorted)
+	{
+		free(list);
 		return ;
-	find_sort(stack->a, size, sorted);
+	}
+	reset_list(sorted, size);
 	reset_list(list, size);
+	find_sort(stack->a, size, sorted);
+	print_list(sorted);
 	best_index = long_consecutive_start(stack);
 	long_consecutive(stack, best_index, list);
 	push_b_unsorted(stack, list);
