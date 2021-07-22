@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:17:21 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/20 15:12:31 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/22 16:22:09 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,13 @@ void	print_stacks(t_stacks *stacks)
 
 void	ft_magic(t_stacks *stacks, int nbr)
 {
-	if (nbr == 3)
+	if (nbr == 1)
+		return ;
+	else if (nbr == 2)
+		algo_for_2(stacks);
+	else if (nbr == 3)
 		algo_for_3(stacks);
-	if (nbr == 5)
+	else if (nbr == 5)
 		algo_for_5(stacks);
 	else
 		insertionv2(stacks, stacks->size);
@@ -91,9 +95,9 @@ int	main(int argc, char **argv)
 		free(stacks);
 		return (error(-1));
 	}
-	print_stacks(stacks);
+	//print_stacks(stacks);
 	ft_magic(stacks, argc - 1);
-	print_stacks(stacks);
+	//print_stacks(stacks);
 	free(stacks->a);
 	free(stacks->b);
 	free(stacks);

@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:24:50 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/20 15:29:13 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/22 16:01:33 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int			ft_abs(int x);
 int			ft_min(int a, int b);
 int			ft_max(int a, int b);
 
+void		algo_for_2(t_stacks *stack);
 void		algo_for_3(t_stacks *stack);
 void		algo_for_5(t_stacks *stack);
 void		insertionv2(t_stacks *stack, long size);

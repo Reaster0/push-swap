@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 15:28:59 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/21 13:51:10 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/22 16:20:36 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	check_sorted(t_stacks *stacks)
 
 	i = 0;
 	j = stack_nb(stacks->a);
-	if (stacks->b[0])
+	if (stacks->b[0] != END_STACK)
 		return (0);
 	sorted = malloc(sizeof(long) * (stacks->size + 1));
 	find_sort(stacks->a, stacks->size, sorted);

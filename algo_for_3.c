@@ -6,11 +6,19 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 15:40:26 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/16 15:42:14 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/22 16:14:26 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	algo_for_2(t_stacks *stack)
+{
+	if (stack->a[0] > stack->a[1])
+		return ;
+	else
+		switch_ra(stack, 1);
+}
 
 void	algo_for_3(t_stacks *stack)
 {
