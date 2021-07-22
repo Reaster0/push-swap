@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/16 16:40:46 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/20 13:57:50 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/22 17:26:00 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	switch_sa(t_stacks *stack, int write_it)
 	stack->a[stack_nb(stack->a) - 1] = temp;
 }
 
-int	stack_size(long *stack) //don't find zero    okay it's fix
+int	stack_size(long *stack)
 {
 	int	i;
 
@@ -57,7 +57,7 @@ int	stack_size(long *stack) //don't find zero    okay it's fix
 	return (i);
 }
 
-int	stack_nb(long *stack) //don't find zero    okay it's fix
+int	stack_nb(long *stack)
 {
 	int	i;
 

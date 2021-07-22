@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:17:21 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/22 16:22:09 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/22 17:22:15 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,7 @@ int	main(int argc, char **argv)
 		free(stacks);
 		return (error(-1));
 	}
-	//print_stacks(stacks);
 	ft_magic(stacks, argc - 1);
-	//print_stacks(stacks);
 	free(stacks->a);
 	free(stacks->b);
 	free(stacks);

@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/16 18:12:28 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/22 15:05:50 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/22 17:29:53 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 void	set_values(long *list_a, long *sorted, int *i, long *temp_prev)
 {
 	i[0] = stack_nb(list_a);
-	i[1] = stack_nb(list_a);// - 1; //ça va surement a -1 a un moment je devrais index minus
+	i[1] = stack_nb(list_a);
 	index_minus(list_a, i + 1);
 	i[2] = 1;
 	temp_prev[0] = where_in(sorted, list_a[i[1]]);
-	// if (!i[1])
-	// 	temp_prev[1] = where_in(sorted, list_a[i[0]]);
-	temp_prev[1] = where_in(sorted, list_a[i[0]]); //before it was list_a[0]
+	temp_prev[1] = where_in(sorted, list_a[i[0]]);
 }
 
 int	find_cheaper_action(long *list_a, long c_index_b, long *sorted)
@@ -31,8 +29,9 @@ int	find_cheaper_action(long *list_a, long c_index_b, long *sorted)
 	long	temp_prev[2];
 
 	set_values(list_a, sorted, i, temp_prev);
-	pos = 0;    //before it was only list_a[i[0]]
-	while (list_a[i[0]] != END_STACK && (i[2] == 1 || i[1] != stack_nb(list_a) - 1))
+	pos = 0;
+	while (list_a[i[0]] != END_STACK && (i[2] == 1
+			|| i[1] != stack_nb(list_a) - 1))
 	{
 		if ((c_index_b > temp_prev[1] && c_index_b < temp_prev[0])
 			|| (temp_prev[1] > temp_prev[0] && (c_index_b < temp_prev[0]
