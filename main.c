@@ -6,44 +6,44 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:17:21 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/22 17:22:15 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/07/27 20:09:31 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_list(long *stack)
-{
-	int	i;
+// void	print_list(long *stack)
+// {
+// 	int	i;
 
-	i = stack_nb(stack);
-	while (i >= 0)
-	{
-		printf("|%3ld|\n", stack[i]);
-		i--;
-	}
-	printf("\n--------------\n----------------\n");
-}
+// 	i = stack_nb(stack);
+// 	while (i >= 0)
+// 	{
+// 		printf("|%3ld|\n", stack[i]);
+// 		i--;
+// 	}
+// 	printf("\n--------------\n----------------\n");
+// }
 
-void	print_stacks(t_stacks *stacks)
-{
-	int	i;
-	int	j;
+// void	print_stacks(t_stacks *stacks)
+// {
+// 	int	i;
+// 	int	j;
 
-	i = stack_nb(stacks->a);
-	j = stack_nb(stacks->b);
-	if (j > i)
-		i = j;
-	while (i >= 0)
-	{
-		if (j == -1)
-			printf("   |%3ld|   |not|\n", stacks->a[i]);
-		else
-			printf("   |%3ld|   |%3ld|\n", stacks->a[i], stacks->b[i]);
-		i--;
-	}
-	printf("\n----------------------\n----------------------\n");
-}
+// 	i = stack_nb(stacks->a);
+// 	j = stack_nb(stacks->b);
+// 	if (j > i)
+// 		i = j;
+// 	while (i >= 0)
+// 	{
+// 		if (j == -1)
+// 			printf("   |%3ld|   |not|\n", stacks->a[i]);
+// 		else
+// 			printf("   |%3ld|   |%3ld|\n", stacks->a[i], stacks->b[i]);
+// 		i--;
+// 	}
+// 	printf("\n----------------------\n----------------------\n");
+// }
 
 void	ft_magic(t_stacks *stacks, int nbr)
 {
@@ -86,7 +86,7 @@ int	main(int argc, char **argv)
 	t_stacks	*stacks;
 
 	if (check_error(argc, argv + 1))
-		return (error(-1));
+		exit (0);
 	stacks = convert_stack(argc, argv + 1);
 	if (check_double_in_a(stacks))
 	{
