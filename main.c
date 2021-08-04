@@ -6,7 +6,7 @@
 /*   By: earnaud <earnaud@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 02:17:21 by earnaud           #+#    #+#             */
-/*   Updated: 2021/07/27 20:09:31 by earnaud          ###   ########.fr       */
+/*   Updated: 2021/08/04 14:49:09 by earnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@
 
 void	ft_magic(t_stacks *stacks, int nbr)
 {
-	if (nbr == 1)
+	if (nbr == 1 || check_sorted(stacks))
 		return ;
 	else if (nbr == 2)
 		algo_for_2(stacks);
@@ -85,8 +85,10 @@ int	main(int argc, char **argv)
 {
 	t_stacks	*stacks;
 
+	if (argc == 1)
+		return (0);
 	if (check_error(argc, argv + 1))
-		exit (0);
+		return (error(-1));
 	stacks = convert_stack(argc, argv + 1);
 	if (check_double_in_a(stacks))
 	{
